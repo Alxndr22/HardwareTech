@@ -9,7 +9,9 @@ a {
     text-decoration: none;
 }
 
-
+body.lock {
+    overflow: hidden;
+}
 .catalog_list {
     z-index: 999;
     position: fixed;
@@ -88,6 +90,14 @@ a {
 .catalog_list_close img {
     width: 23px;
 }
+.popup_close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.popup_close img {
+    width: 23px;
+}
 .catalog_list:target {
     opacity: 1;
     visibility: visible;
@@ -113,6 +123,28 @@ a {
     margin: 0;
     padding-right: 10px;
     width: 25px;
+}
+
+
+.catalog_list_content_1 {
+    background-color: #EFEFEF;
+    max-width: 1000px;
+
+    padding: 0;
+
+    transition: height 500ms 500ms, opacity 500ms 0ms, padding 500ms 0ms;
+    opacity: 0.0;
+    height: 0;
+}
+.catalog_list_content_1.visible {
+    padding: 5px 0 30px 20px;
+    overflow: hidden;  /* Hide the element content, while height = 0 */
+    height: 320px;
+    opacity: 1.0;
+    transition: height 500ms 0ms, opacity 500ms 500ms, padding 500ms 0ms;
+}
+body.lock {
+    overflow: hidden;
 }
 
 

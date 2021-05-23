@@ -17,52 +17,78 @@
         <div id="first-page_inner">
             <div id="first-page_left">
                 <p id="first-page_title">Реєстрація</p>
+
+                <input id="change_author" type="checkbox">
+                <label for="change_author">
+                    <p id="register">Реєстрація </p>
+                    <p id="slash">/ </p>
+                    <p id="enter">Вхід</p>
+                </label>
+
                 <hr>
-                <div>
+                <div class="field_row">
                     <label for="your_comment_input" class="field_label" >Ім'я</label>
                     <input class="field_input" type="text" name="name" value="">
                 </div>
-                <div>
+                <div class="field_row">
                     <label for="your_comment_input" class="field_label" >Прізвище</label>
                     <input class="field_input" type="text" name="name" value="">
                 </div>
-                <div>
+                <div class="field_row">
                     <label for="your_comment_input" class="field_label" >По-батькові</label>
                     <input class="field_input" type="text" name="name" value="">
                 </div>
-                <div>
+                <div class="field_row">
                     <label for="your_comment_input" class="field_label" >Телефон</label>
                     <input class="field_input" type="text" name="name" value="">
                 </div>
-                <div>
+                <div class="field_row">
                     <label for="your_comment_input" class="field_label" >E-mail</label>
                     <input class="field_input" type="text" name="name" value="">
                 </div>
-                <div>
+                <div class="field_row">
                     <label for="your_comment_input" class="field_label" >Пароль</label>
                     <input class="field_input" type="text" name="name" value="">
                 </div>
-                <div>
+                <div class="field_row">
                     <label for="your_comment_input" class="field_label" >Підтвердити пароль</label>
                     <input class="field_input" type="text" name="name" value="">
                 </div>
-                <input id="your_comment_button" type="submit" name="doGO" value="Зареєструватися">
+                <input id="field_button" class="field_button_register" type="submit" name="doGO" value="Зареєструватися">
+
+                <div id="first-page_right">
+                    <div class="field_row">
+                        <label for="your_comment_input" class="field_label" id="field_label_right">Email / Телефон</label>
+                        <input class="field_input" type="text" name="name" value="">
+                    </div>
+                    <div class="field_row">
+                        <label for="your_comment_input" class="field_label" id="field_label_right">Пароль</label>
+                        <input class="field_input" type="text" name="name" value="">
+                    </div>
+                    <div class="field_row">
+                        <div></div>
+                        <a id="forgot_password" href="">
+                            Забули пароль?
+                        </a>
+                    </div>
+                    <input id="field_button" type="submit" name="doGO" value="Увійти">
+                </div>
             </div>
             <div id="first-page_right">
                 <p id="first-page_title">Вхід</p>
                 <hr>
-                <div>
-                    <label for="your_comment_input" class="field_label" >Email / Телефон</label>
+                <div class="field_row">
+                    <label for="your_comment_input" class="field_label" id="field_label_right">Email / Телефон</label>
                     <input class="field_input" type="text" name="name" value="">
                 </div>
-                <div>
-                    <label for="your_comment_input" class="field_label" >Пароль</label>
+                <div class="field_row">
+                    <label for="your_comment_input" class="field_label" id="field_label_right">Пароль</label>
                     <input class="field_input" type="text" name="name" value="">
                 </div>
-                <a href="">
+                <a href="" style="font-family: 'Fira Sans', serif; font-size: 16px; color: #243D56; padding: 0">
                     Забули пароль?
                 </a>
-                <input id="your_comment_button" type="submit" name="doGO" value="Увійти">
+                <input id="field_button" type="submit" name="doGO" value="Увійти">
             </div>
         </div>
 
