@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+.body-el{
+    width: 100%;
+
+}
+
+
+#info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+.info-block{
+    height: 300px;
+    width: 1170px;
+    margin-top: 3%;;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-block div>p{
+    font-family: Fira Sans,sans-serif;
+    font-size: 29px;
+    font-weight: 400;
+    text-align: left;
+    height: 25px;
+    margin-left: 1%;
+    white-space: pre;
+}
+
+.info-label{
+
+    width: fit-content;
+}
+
+hr{
+    position: relative;
+    width: 100%;
+    margin-left:0;margin-right:0;
+    height: 2px;
+    background: #C4C4C4;
+}
+
+.info-content{
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+.info-content p{
+    font-size: 23px;
+}
+img.info-icon {
+    width: 38px;
+}
+
+div.callback-number{
+    /*border: 1px solid red;*/
+    display: flex;
+    align-items: center;
+    height: 55px;
+
+}
+div.callback-mail{
+    /*border: 1px solid red;*/
+    display: flex;
+    align-items: center;
+    height: 55px;
+}
+
+div.callback-number p{
+    margin-bottom: 2.5%;
+    margin-left: 3%;
+    /*font-size: 24px;*/
+}
+div.callback-mail p{
+    margin-bottom: 2.5%;
+    margin-left: 3%;
+    /*font-size: 24px;*/
+}
+
+#location{
+    height: 75px;
+}
+
+
+#placeholder{
+    width: 45px;
+}
+
+div.schedule{
+
+    width: 485px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-left: 28px;
+}
+
+div.schedule p{
+    /*font-size: 23px;*/
+    height: 30px;
+}
+div.schedule p.time{
+    font-size: 23px;
+    height: 10px;
+}
+
+#office{
+    flex-direction: row;
+    justify-content: center;
+    height: 420px;
+}
+#adress{
+    height: 550px;
+    margin-bottom: 100px;
+}
+#office-map{
+    width: 640px;
+
+}
+#office-text{
+    width: 530px;
+}
+#top-text{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#bottom-text p{
+    /*font-size: 23px;*/
+}
+#callback-number-bottom{
+    /*border: 1px solid red;*/
+    display: flex;
+    align-items: center;
+    height: 55px;
+    margin-top: 60px;
+    margin-left: 5px;
+}
+#numbers{
+    margin-left: 30px;
+    margin-top: 25px;
+}
+#mail-top{
+    margin-top: 50px;
+}
+#quest{
+    flex-direction: row;
+    justify-content: center;
+    height: 420px;
+}
+
+#quest-right{
+
+    width: 54.7%;
+
+}
+#quest-left{
+
+    margin-top: 12px;
+    width: 45.3%;
+}
+
+@media (max-width: 1250px) {
+    .info-block{
+        width: 960px;
+    }
+    .info-block div>p{
+        font-size: 27px;
+    }
+    div.info-content p{
+        font-size: 21px;
+    }
+    div.schedule p.time{
+        font-size: 21px;
+    }
+}
+@media (max-width: 1024px) {
+    .info-block{
+        width: 750px;
+    }
+    .info-block div>p{
+        font-size: 26px;
+    }
+    div.info-content p{
+        font-size: 20px;
+    }
+    div.schedule p.time{
+        font-size: 20px;
+    }
+    #quest-right{
+        width: 50%;
+
+    }
+    #quest-left{
+        width: 50%;
+    }
+    img.info-icon{
+        width: 36px;
+    }
+}
+@media(max-width: 768px) {
+    .info-block{
+        width: 560px;
+    }
+    hr{
+        width: 560px;
+    }
+    .info-block div>p{
+        font-size: 25px;
+    }
+    div.info-content p{
+        font-size: 19px;
+    }
+    div.schedule p.time{
+        font-size: 19px;
+    }
+    #office{
+        flex-direction: column;
+        justify-content: center;
+        height: 420px;
+    }
+    #office-text{
+        display: flex;
+        flex-direction: row;
+    }
+    img.info-icon{
+        width: 32px;
+    }
+}
+@media (max-width: 575px) {
+    .info-block{
+        width: 480px;
+    }
+    hr{
+        width: 480px;
+    }
+    .info-block div>p{
+        font-size: 23px;
+    }
+    div.info-content p{
+        font-size: 17px;
+    }
+    div.schedule p.time{
+        font-size: 17px;
+    }
+}
+@media (max-width: 500px) {
+    .info-block{
+        width: 365px;
+    }
+    hr{
+        width: 365px;
+    }
+    img.info-icon{
+        width: 25px;
+    }
+}
+@media (max-width: 400px) {
+}
+
+@media(max-width: 375px) {
+    #office-text{
+        display: block;
+    }
+    #office{
+        flex-direction: column;
+        justify-content: center;
+        height: 420px;
+    }
+}

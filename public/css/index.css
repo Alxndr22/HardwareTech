@@ -1,0 +1,251 @@
+body{
+    margin:0;
+}
+img {
+    height: inherit;
+}
+
+#header{
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 100%;
+    height: 80px;
+
+    position: fixed;
+    z-index: 1000;
+    top:0;
+
+    background-color: #243D56;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.inner{
+    height: inherit;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    width: 260px;
+    position: relative;
+}
+
+#pics{
+    display: flex;
+}
+
+#pics > a {
+    height: 45px;
+    width: 45px;
+    filter: invert(100%);
+}
+
+#cart-icon{
+    margin-right:20px;
+}
+#user-icon{
+    margin-right:60px;
+}
+
+
+
+
+#footer{
+    position: relative;
+    top: 100px;
+    background-color: #243D56;
+    height: 380px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#footer > div{
+    min-width: 650px;
+}
+
+#contacts{
+    font-family: Ubuntu, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: white;
+}
+#contacts p{
+    margin: 20% 0 20% 0;
+    white-space: pre;
+}
+#top-cont {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+}
+
+#top-cont img, #bottom-cont img{
+    height: 40px;
+}
+#top-cont img{
+    position: relative;
+    top: 15%;
+}
+#top-cont p{
+    left:15%;
+}
+#bottom-cont p{
+    left: 10%;
+}
+#top-cont p, #bottom-cont p{
+    margin-left: 25px;
+    font-family: Ubuntu, sans-serif;
+    font-size: 24px;
+    font-weight: 200;
+    color: white;
+}
+#bottom-cont img{
+    filter: invert(100%);
+}
+#bottom-cont {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: 50px;
+    position: relative;
+}
+#link{
+    height: 150px;
+    bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+@media(min-width: 1250px) {
+    div.inner {
+        width: 1170px;
+    }
+}
+@media(max-width: 1249px) {
+    div.inner {
+        width: 960px;
+    }
+}
+@media (max-width: 1024px) {
+    div.inner {
+        width: 100%;
+        max-width: 720px;
+    }
+}
+
+
+@media(max-width: 1550px){
+    #footer .inner > div.logo{
+        width: 230px;
+    }
+    #footer{
+        height: 350px;
+    }
+    #contacts{
+        font-family: Ubuntu, sans-serif;
+        font-size: 25px;
+        font-weight: 400;
+        color: white;
+    }
+    #top-cont p, #bottom-cont p{
+        margin-left: 25px;
+        font-family: Ubuntu, sans-serif;
+        font-size: 22px;
+        font-weight: 200;
+        color: white;
+    }
+    #top-cont img, #bottom-cont img{
+        height: 35px;
+    }
+}
+@media(max-width: 1340px){
+    #footer .inner > div.logo{
+        width: 200px;
+    }
+    #footer{
+        height: 320px;
+    }
+}
+@media(max-width: 1140px){
+    #footer .inner > div.logo{
+        width: 170px;
+    }
+    #footer{
+        height: 200px;
+    }
+    #contacts{
+        font-family: Ubuntu, sans-serif;
+        font-size: 17px;
+        font-weight: 400;
+        color: white;
+    }
+    #top-cont p, #bottom-cont p{
+        margin-left: 22px;
+        font-family: Ubuntu, sans-serif;
+        font-size: 16px;
+        font-weight: 100;
+        color: white;
+    }
+    #top-cont img, #bottom-cont img{
+        height: 22px;
+    }
+}
+@media(max-width: 767px){
+    #header{
+        height: 65px;
+    }
+    div.inner{
+        width: 95%;
+        min-width: 0;
+    }
+    #pics > a {
+        height: 30px;
+        width: 30px;
+    }
+    .logo{
+        width: 215px;
+    }
+    #cart-icon{
+        margin-right:15px;
+    }
+    #user-icon{
+        margin-right:40px;
+    }
+    #footer{
+        display: none;
+    }
+}
+@media(max-width: 450px){
+    #user-icon{
+        display: none;
+    }
+    #cart-icon{
+        display: none;
+    }
+
+}
+@media(max-width: 375px){
+    #header{
+        height: 55px;
+    }
+
+    .logo{
+        width: 150px;
+    }
+
+    #pics > a {
+        height: 22px;
+        width: 22px;
+        filter: invert(100%);
+    }
+}
