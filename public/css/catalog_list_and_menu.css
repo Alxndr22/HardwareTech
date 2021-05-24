@@ -136,12 +136,13 @@ body.lock {
     opacity: 0.0;
     height: 0;
 }
+
 .catalog_list_content_1.visible {
     padding: 5px 0 30px 20px;
     overflow: hidden;  /* Hide the element content, while height = 0 */
     height: 320px;
     opacity: 1.0;
-    transition: height 500ms 0ms, opacity 500ms 500ms, padding 500ms 0ms;
+    transition: height 500ms 100ms, opacity 500ms 500ms, padding 500ms 0ms;
 }
 body.lock {
     overflow: hidden;

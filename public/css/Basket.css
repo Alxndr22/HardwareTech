@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap');
+* {
+    box-sizing: border-box;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+#catalog-page {
+    margin-top: 40px;
+}
+#second-page {
+    margin-left: auto;
+    margin-right: auto;
+}
+#second-page_title {
+    margin: 0 0 20px 0;
+    font-family: "Ubuntu", serif;
+    font-weight: bold;
+    font-size: 40px;
+}
+hr {
+    width: 300px;
+    margin: 23px 0 23px 0;
+    height: 2px;
+    background: #C4C4C4;
+    border: none;
+}
+.item {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.item_inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.item_img img {
+    width: 150px;
+    box-shadow: rgba(0,0,0,0.26) 2px 2px;
+}
+.item_title {
+    max-width: 500px;
+    font-family: "Fira Sans", serif;
+    font-size: 22px;
+}
+.amount_price {
+    width: 330px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#second-page_amount {
+    display: flex;
+}
+#second-page_amount img {
+    width: 30px;
+}
+#second-page_amount_digit {
+    font-family: "Fira Sans", serif;
+    font-size: 30px;
+    margin: 0 20px 0 20px;
+}
+.item_price {
+    font-family: "Fira Sans", serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: #243D56;
+}
+.item_delete img {
+    width: 25px;
+}
+.item_hr {
+    width: 200px;
+}
+#sum {
+    display: flex;
+    justify-content: flex-end;
+}
+#sum p {
+    margin-top: 0;
+    font-family: "Fira Sans", serif;
+    font-weight: bold;
+    font-size: 36px;
+}
+#sum_title {
+    font-size: 46px;
+    margin-right: 40px;
+}
+
+
+#third-page {
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#payment_hr {
+    width: 450px;
+}
+.field_row {
+    max-width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.field_label {
+    font-family: "Fira Sans", serif;
+    font-size: 18px;
+    padding: 10px 0;
+}
+.field_input {
+    height: 25px;
+    width: 200px;
+    border: 1px solid black;
+}
+.sub_title {
+    margin: 0 0 40px 0;
+    font-family: "Fira Sans", serif;
+    font-size: 28px;
+}
+.hr_sub_title {
+    width: 200px;
+}
+.inner_element {
+    margin: 5px 0 50px 50px;
+}
+.custom_select {
+    font-family: "Fira Sans", serif;
+    font-size: 14px;
+}
+.custom_select select {
+    font-family: "Fira Sans", serif;
+    border: 1px solid black;
+    width: 200px;
+    height: 25px;
+    margin-left: 20px;
+}
+.delivery_label {
+
+    font-family: "Fira Sans", serif;
+    font-size: 18px;
+}
+.additional_info {
+    font-family: 'Fira Sans', serif;
+    font-size: 14px;
+    color: #243D56;
+}
+
+#field_button {
+    display: block;
+    background-color: #DBBB80;
+    font-family: "Ubuntu", serif;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    margin-top: 40px;
+    border: 1px solid #97763A;
+    transition: background-color 1s;
+    width: 25%;
+    height: 50px;
+}
+#field_button:hover {
+    background-color: #e5cfa7;
+}
+
+#NP, #runner, #pick-up, #privat24, #visa-master {
+    margin-bottom: 30px;
+    margin-right: 20px;
+}
+#NP_inner, #runner_inner, #pick-up_inner, #privat_inner , #visa-master_inner {
+    display: none;
+}
+
+#NP:checked ~ #NP_inner {
+    display: block;
+}
+#runner:checked ~ #runner_inner {
+    display: block;
+}
+#pick-up:checked ~ #pick-up_inner {
+    display: block;
+}
+
+
+#privat24:checked ~ #privat_inner {
+    display: block;
+}
+#visa-master:checked ~ #visa-master_inner {
+    display: block;
+}
+
+
+
+@media (min-width: 1250px) {
+    #first-page {
+        width: 1100px;
+    }
+    #second-page, #third-page, #fourth-page {
+        width: 1170px;
+    }
+}
+@media (max-width: 1249px) {
+    #first-page, #second-page, #third-page, #fourth-page {
+        width: 960px;
+    }
+    #second-page_amount img {
+        width: 30px;
+    }
+
+    .item_title {
+        max-width: 300px;
+        font-size: 20px;
+    }
+    .item_price {
+        font-size: 34px;
+    }
+}
+@media (max-width: 1024px) {
+    #first-page, #second-page, #third-page, #fourth-page {
+        width: 100%;
+        max-width: 720px;
+    }
+
+    #second-page_title {
+        font-size: 35px;
+    }
+
+    .item_img img {
+        width: 100px;
+    }
+    .item_title {
+        max-width: 300px;
+        font-size: 18px;
+    }
+    .item_price {
+        font-size: 28px;
+    }
+    .amount_price {
+        width: 230px;
+    }
+    #second-page_amount img {
+        width: 20px;
+    }
+    #second-page_amount_digit {
+        font-size: 25px;
+    }
+    .item_delete img {
+        width: 20px;
+    }
+    #sum p {
+        font-size: 30px;
+    }
+    #sum_title {
+        font-size: 40px;
+    }
+
+    .field_row {
+        max-width: 60%;
+    }
+    #field_button {
+        width: 40%;
+    }
+
+
+    #footer {
+        display: none;
+    }
+}
+@media (max-width: 767px) {     /*  mobile  */
+    #first-page, #second-page, #third-page, #fourth-page {
+        width: 100%;
+        padding: 0 15px 0 15px;
+    }
+    #third-page {
+        margin-bottom: 100px;
+    }
+
+    .item_img img {
+        width: 80px;
+    }
+    .item_title {
+        max-width: 250px;
+        font-size: 16px;
+    }
+    .item_price {
+        font-size: 25px;
+    }
+    #second-page_amount img {
+        width: 18px;
+    }
+    #second-page_amount_digit {
+        font-size: 23px;
+    }
+    .item_delete img {
+        width: 18px;
+    }
+
+    #sum p {
+        font-size: 26px;
+    }
+    #sum_title {
+        font-size: 36px;
+    }
+
+}
+@media (max-width: 620px) {
+    #second-page_title {
+        font-size: 30px;
+    }
+    #sum_title {
+        font-size: 34px;
+    }
+
+    .item_title {
+        max-width: 240px;
+        font-size: 15px;
+    }
+    .item_price {
+        font-size: 21px;
+    }
+    .amount_price {
+        width: 170px;
+    }
+    #second-page_amount img {
+        width: 16px;
+    }
+    #second-page_amount_digit {
+        font-size: 19px;
+        margin: 0 10px 0 10px;
+    }
+    .item_delete img {
+        width: 16px;
+    }
+
+    .field_row {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 575px) {
+    #field_button {
+        width: 50%;
+    }
+
+    .item_img img {
+        width: 60px;
+    }
+    .item_title {
+        max-width: 190px;
+        font-size: 15px;
+    }
+
+}
+@media (max-width: 500px) {
+    #second-page {
+        margin-top: 40px;
+    }
+    hr {
+        width: 200px;
+    }
+    .field_label, .delivery_label {
+        font-size: 16px;
+    }
+    #field_button {
+        width: 60%;
+    }
+
+    .amount_price {
+        width: auto;
+        flex-direction: column-reverse;
+    }
+
+    #sum p {
+        font-size: 23px;
+    }
+    #sum_title {
+        font-size: 33px;
+    }
+
+    #payment_hr {
+        width: 300px;
+    }
+
+}
+@media (max-width: 430px) {
+    .item_title {
+        max-width: 120px;
+        font-size: 13px;
+    }
+}
+@media (max-width: 400px) {
+    .item_price {
+        font-size: 19px;
+    }
+
+    .field_label {
+        font-size: 14px;
+    }
+    .field_input, .custom_select select {
+        width: 150px;
+    }
+
+    #field_button {
+        font-size: 16px;
+        width: 70%;
+    }
+}
+
+@media (max-width: 340px) {
+    .field_input, .custom_select select {
+        width: 100px;
+    }
+}

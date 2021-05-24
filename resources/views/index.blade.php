@@ -19,7 +19,7 @@
             <img src="{{ asset('images/Logo_HT_1.svg') }}">
         </a>
         <div id="pics">
-            <a href="" id="cart-icon">
+            <a href="/basket" id="cart-icon">
                 <img src="{{ asset('images/add-to-cart.svg') }}">
             </a>
             <a href="/authorization" id="user-icon">

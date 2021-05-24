@@ -27,5 +27,8 @@ Route::get('container/{category}', [Controller::class, 'viewCategory']);
 Route::get('/authorization', function () {
     return view('Authorization');
 });
+Route::get('/basket', function () {
+    return view('Basket');
+});
 
 
