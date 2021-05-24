@@ -55,7 +55,7 @@
             <a id="menu_list_link" href="/info"><img src="{{ asset('images/Phone(black).svg') }}"><p class="menu_item">Контакти</p></a>
             <a id="menu_list_link" href=""><img src="{{ asset('images/information.svg') }}"><p class="menu_item">Доставка/Оплата</p></a><br>
             <a id="menu_list_link" href="/authorization"><img src="{{ asset('images/user.svg') }}"><p class="menu_item">Профіль</p></a>
-            <a id="menu_list_link" href=""><img src="{{ asset('images/add-to-cart.svg') }}"><p class="menu_item">Кошик</p></a>
+            <a id="menu_list_link" href="/basket"><img src="{{ asset('images/add-to-cart.svg') }}"><p class="menu_item">Кошик</p></a>
         </div>
         <a href="#header" class="catalog_list_area"></a>
     </div>
