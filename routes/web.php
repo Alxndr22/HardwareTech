@@ -30,5 +30,7 @@ Route::get('/authorization', function () {
 Route::get('/basket', function () {
     return view('Basket');
 });
-
+Route::get('/delivery', function () {
+    return view('Delivery');
+});
 

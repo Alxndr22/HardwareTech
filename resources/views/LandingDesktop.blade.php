@@ -311,19 +311,19 @@ $connect = mysqli_connect("webhosting.apeps.pp.ua", "c49_ht", "rmRkWy@UkR6X", "c
             <input id="slide-dot-13" type="radio" name="slides5" style="display: none" checked>
             <div class="slide slide-1">
                 <div class="slide-img">
-                    <img src="{{ asset('images/1.png') }}">
+                    <img src="{{ asset('images/1.jpg') }}">
                     <p class="product-name">PNY gtx 560 4gb</p>
                     <p class="price">3 599 ₴</p>
                 </div>
 
                 <div class="slide-img">
-                    <img src="{{ asset('images/1.png') }}">
+                    <img src="{{ asset('images/1.jpg') }}">
                     <p class="product-name">PNY gtx 560 4gb</p>
                     <p class="price">3 599 ₴</p>
                 </div>
 
                 <div class="slide-img slide_cont-3">
-                    <img src="{{ asset('images/1.png') }}">
+                    <img src="{{ asset('images/1.jpg') }}">
                     <p class="product-name">PNY gtx 560 4gb</p>
                     <p class="price">3 599 ₴</p>
                 </div>
@@ -400,19 +400,19 @@ $connect = mysqli_connect("webhosting.apeps.pp.ua", "c49_ht", "rmRkWy@UkR6X", "c
             <input id="slide-dot-16" type="radio" name="slides6" style="display: none" checked>
             <div class="slide slide-1">
                 <div class="slide-img">
-                    <img src="{{ asset('images/1.png') }}">
+                    <img src="{{ asset('images/1.jpg') }}">
                     <p class="product-name">PNY gtx 560 4gb</p>
                     <p class="price">3 599 ₴</p>
                 </div>
 
                 <div class="slide-img">
-                    <img src="{{ asset('images/1.png') }}">
+                    <img src="{{ asset('images/1.jpg') }}">
                     <p class="product-name">PNY gtx 560 4gb</p>
                     <p class="price">3 599 ₴</p>
                 </div>
 
                 <div class="slide-img slide_cont-3">
-                    <img src="{{ asset('images/1.png') }}">
+                    <img src="{{ asset('images/1.jpg') }}">
                     <p class="product-name">PNY gtx 560 4gb</p>
                     <p class="price">3 599 ₴</p>
                 </div>
@@ -489,19 +489,19 @@ $connect = mysqli_connect("webhosting.apeps.pp.ua", "c49_ht", "rmRkWy@UkR6X", "c
             <input id="slide-dot-19" type="radio" name="slides7" style="display: none" checked>
             <div class="slide slide-1">
                 <div class="slide-img">
-                    <img src="{{ asset('images/1.png') }}">
+                    <img src="{{ asset('images/1.jpg') }}">
                     <p class="product-name">PNY gtx 560 4gb</p>
                     <p class="price">3 599 ₴</p>
                 </div>
 
                 <div class="slide-img">
-                    <img src="{{ asset('images/1.png') }}">
+                    <img src="{{ asset('images/1.jpg') }}">
                     <p class="product-name">PNY gtx 560 4gb</p>
                     <p class="price">3 599 ₴</p>
                 </div>
 
                 <div class="slide-img slide_cont-3">
-                    <img src="{{ asset('images/1.png') }}">
+                    <img src="{{ asset('images/1.jpg') }}">
                     <p class="product-name">PNY gtx 560 4gb</p>
                     <p class="price">3 599 ₴</p>
                 </div>
@@ -578,19 +578,19 @@ $connect = mysqli_connect("webhosting.apeps.pp.ua", "c49_ht", "rmRkWy@UkR6X", "c
             <input id="slide-dot-22" type="radio" name="slides8" style="display: none" checked>
             <div class="slide slide-1">
                 <div class="slide-img">
-                    <img src="{{ asset('images/1.png') }}">
+                    <img src="{{ asset('images/1.jpg') }}">
                     <p class="product-name">PNY gtx 560 4gb</p>
                     <p class="price">3 599 ₴</p>
                 </div>
 
                 <div class="slide-img">
-                    <img src="{{ asset('images/1.png') }}">
+                    <img src="{{ asset('images/1.jpg') }}">
                     <p class="product-name">PNY gtx 560 4gb</p>
                     <p class="price">3 599 ₴</p>
                 </div>
 
                 <div class="slide-img slide_cont-3">
-                    <img src="{{ asset('images/1.png') }}">
+                    <img src="{{ asset('images/1.jpg') }}">
                     <p class="product-name">PNY gtx 560 4gb</p>
                     <p class="price">3 599 ₴</p>
                 </div>

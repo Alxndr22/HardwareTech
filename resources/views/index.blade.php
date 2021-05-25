@@ -53,7 +53,7 @@
 
 
             <a id="menu_list_link" href="/info"><img src="{{ asset('images/Phone(black).svg') }}"><p class="menu_item">Контакти</p></a>
-            <a id="menu_list_link" href=""><img src="{{ asset('images/information.svg') }}"><p class="menu_item">Доставка/Оплата</p></a><br>
+            <a id="menu_list_link" href="/delivery"><img src="{{ asset('images/information.svg') }}"><p class="menu_item">Доставка/Оплата</p></a><br>
             <a id="menu_list_link" href="/authorization"><img src="{{ asset('images/user.svg') }}"><p class="menu_item">Профіль</p></a>
             <a id="menu_list_link" href="/basket"><img src="{{ asset('images/add-to-cart.svg') }}"><p class="menu_item">Кошик</p></a>
         </div>
@@ -111,26 +111,26 @@
 </body>
 <div id="footer">
     <div class="inner">
-        <div class="logo">
+        <a href="/" class="logo">
             <img src="{{ asset('images/Logo_HT_1.svg') }}">
-        </div>
+        </a>
         <div id="contacts">
-            <p>Каталог</p>
-            <p>Доставка і оплата</p>
-            <p>Контакти</p>
+            <a href="#menu_list">Каталог</a>
+            <a href="/delivery">Доставка і оплата</a>
+            <a href="/info">Контакти</a>
         </div>
         <div id="link">
             <div id="top-cont">
                 <img src="{{ asset('images/Phone(white).svg') }}">
                 <div>
-                    <p>+38 066 451-51-93</p>
-                    <p>+38 093 511-45-75</p>
+                    <a href="tel:+380664515193">+38 066 451-51-93</a>
+                    <a href="tel:+380935114575">+38 093 511-45-75</a>
                 </div>
 
             </div>
             <div id="bottom-cont">
                 <img src="{{ asset('images/mail.svg') }}">
-                <p>hardwaretech@gmail.com</p>
+                <a href="mailto:hardwaretech@gmail.com">hardwaretech@gmail.com</a>
             </div>
         </div>
     </div>

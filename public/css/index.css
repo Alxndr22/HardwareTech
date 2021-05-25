@@ -1,11 +1,11 @@
-body{
+body {
     margin:0;
 }
 img {
     height: inherit;
 }
 
-#header{
+#header {
     margin-left: auto;
     margin-right: auto;
 
@@ -72,13 +72,15 @@ div.inner{
     min-width: 650px;
 }
 
-#contacts{
+#contacts {
     font-family: Ubuntu, sans-serif;
     font-size: 24px;
     font-weight: 400;
     color: white;
 }
-#contacts p{
+#contacts a {
+    display: block;
+    color: white;
     margin: 20% 0 20% 0;
     white-space: pre;
 }
@@ -86,6 +88,9 @@ div.inner{
     display: flex;
     justify-content: center;
     width: fit-content;
+}
+#bottom-cont {
+    margin-top: 30px;
 }
 
 #top-cont img, #bottom-cont img{
@@ -95,13 +100,16 @@ div.inner{
     position: relative;
     top: 15%;
 }
-#top-cont p{
+#top-cont a {
+    display: block;
     left:15%;
+    margin-top: 20px;
 }
-#bottom-cont p{
+#bottom-cont a {
+    display: block;
     left: 10%;
 }
-#top-cont p, #bottom-cont p{
+#top-cont a, #bottom-cont a{
     margin-left: 25px;
     font-family: Ubuntu, sans-serif;
     font-size: 24px;
@@ -145,7 +153,7 @@ div.inner{
 
 
 @media(max-width: 1550px){
-    #footer .inner > div.logo{
+    #footer .inner > a.logo{
         width: 230px;
     }
     #footer{
@@ -157,7 +165,7 @@ div.inner{
         font-weight: 400;
         color: white;
     }
-    #top-cont p, #bottom-cont p{
+    #top-cont a, #bottom-cont a{
         margin-left: 25px;
         font-family: Ubuntu, sans-serif;
         font-size: 22px;
@@ -177,7 +185,7 @@ div.inner{
     }
 }
 @media(max-width: 1140px){
-    #footer .inner > div.logo{
+    #footer .inner > a.logo{
         width: 170px;
     }
     #footer{
@@ -189,12 +197,18 @@ div.inner{
         font-weight: 400;
         color: white;
     }
-    #top-cont p, #bottom-cont p{
+    #top-cont a, #bottom-cont a{
         margin-left: 22px;
         font-family: Ubuntu, sans-serif;
         font-size: 16px;
         font-weight: 100;
         color: white;
+    }
+    #bottom-cont {
+        margin-top: 15px;
+    }
+    #top-cont a {
+        margin-top: 15px;
     }
     #top-cont img, #bottom-cont img{
         height: 22px;

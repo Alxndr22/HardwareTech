@@ -180,7 +180,7 @@ class DatabaseSeeder extends Seeder
         $cpu10->save();
 
         $gpu1_img1 = new Image([
-            'image' => '1.png',
+            'image' => '1.jpg',
             'product_id' => $gpu1->id,
         ]);
         $gpu2_img1 = new Image([
