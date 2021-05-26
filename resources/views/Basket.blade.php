@@ -21,13 +21,13 @@
                 <a href="#header"  class="popup_close">
                     <img src="{{ asset('images/letter-x.svg') }}">
                 </a>
-                <a id="menu_list_link" href="/Videocard"><img src="{{ asset('images/video-card.svg') }}"><p class="menu_item">Відеокарти</p></a>
-                <a id="menu_list_link" href="/Motherboard"><img src="{{ asset('images/motherboard.svg') }}"><p class="menu_item">Материнські плати</p></a>
-                <a id="menu_list_link" href="/Processor"><img src="{{ asset('images/cpu.svg') }}"><p class="menu_item">Процесори</p></a>
-                <a id="menu_list_link" href="/Ram"><img src="{{ asset('images/ram.svg') }}"><p class="menu_item">Оперативна пам'ять</p></a>
-                <a id="menu_list_link" href="/Body"><img src="{{ asset('images/body.svg') }}"><p class="menu_item">Корпуси</p></a>
-                <a id="menu_list_link" href="/Power"><img src="{{ asset('images/power-supply.svg') }}"><p class="menu_item">Блоки живлення</p></a>
-                <a id="menu_list_link" href="/HDD"><img src="{{ asset('images/hdd.svg') }}"><p class="menu_item">Жорсткі диски</p></a>
+                <a id="menu_list_link" href="{{ url('container', ['Відеокарти']) }}"><img src="{{ asset('images/video-card.svg') }}"><p class="menu_item">Відеокарти</p></a>
+                <a id="menu_list_link" href="{{ url('container', ['Материнські плати']) }}"><img src="{{ asset('images/motherboard.svg') }}"><p class="menu_item">Материнські плати</p></a>
+                <a id="menu_list_link" href="{{ url('container', ['Процесори']) }}"><img src="{{ asset('images/cpu.svg') }}"><p class="menu_item">Процесори</p></a>
+                <a id="menu_list_link" href="{{ url('container', ["Оперативна пам'ять"]) }}"><img src="{{ asset('images/ram.svg') }}"><p class="menu_item">Оперативна пам'ять</p></a>
+                <a id="menu_list_link" href="{{ url('container', ['Корпуси']) }}"><img src="{{ asset('images/body.svg') }}"><p class="menu_item">Корпуси</p></a>
+                <a id="menu_list_link" href="{{ url('container', ['Блоки живлення']) }}"><img src="{{ asset('images/power-supply.svg') }}"><p class="menu_item">Блоки живлення</p></a>
+                <a id="menu_list_link" href="{{ url('container', ['Жорсткі диски']) }}"><img src="{{ asset('images/hdd.svg') }}"><p class="menu_item">Жорсткі диски</p></a>
             </div>
             <a href="#header" class="catalog_list_area"></a>
         </div>
@@ -48,6 +48,31 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $(".popup_close").click(function ()  {
+                if ( $("body").hasClass("lock")) {
+                    $("body").removeClass("lock");
+                }
+            });
+            $(".popup_area").click(function ()  {
+                if ( $("body").hasClass("lock")) {
+                    $("body").removeClass("lock");
+                }
+            });
+            $(".catalog2").click(function ()  {
+                if ( $("body").hasClass("lock")) {
+                    $("body").removeClass("lock");
+                } else {
+                    $("body").addClass("lock");
+                }
+            });
+            $(".catalog_list_area").click(function ()  {
+                if ( $("body").hasClass("lock")) {
+                    $("body").removeClass("lock");
+                }
+            });
+        });</script>
 
 
     <div id="second-page">
