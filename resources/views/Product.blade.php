@@ -74,10 +74,28 @@
                 <div id="second-page_amount_comparison_basket">
                     <div id="second-page_amount_comparison">
                         <div id="second-page_amount">
-                            <img src="{{ asset('images/left-arrow.svg') }}" alt="">
-                            <p id="second-page_amount_digit">1</p>                      {{--  Number from SQL  --}}
-                            <img style="transform: rotate(180deg)" src="{{ asset('images/left-arrow.svg') }}" alt="{{ $products[0]->name }}">
+                            <img id="button_minus" src="{{ asset('images/left-arrow.svg') }}" alt="">
+                            <input type="number" readonly step="1" min="1" max="10" id="second-page_amount_digit" name="quantity" value="1" title="Qty">
+                            <img id="button_plus" style="transform: rotate(180deg)" src="{{ asset('images/left-arrow.svg') }}" alt="{{ $products[0]->name }}">
                         </div>
+                        <script>
+                            var numCount = document.getElementById('second-page_amount_digit');
+                            var plusBtn = document.getElementById('button_plus');
+                            var minusBtn = document.getElementById('button_minus');
+                            plusBtn.onclick = function() {
+                                var qty = parseInt(numCount.value);
+                                var max = parseInt(numCount.max)
+                                if (qty < max)
+                                    qty = qty + 1;
+                                numCount.value = qty;
+                            }
+                            minusBtn.onclick = function() {
+                                var qty = parseInt(numCount.value);
+                                if (qty > 1)
+                                    qty = qty - 1;
+                                numCount.value = qty;
+                            }
+                        </script>
                         <div id="second-page_amount">
                             <img src="{{ asset('images/comparison.svg') }}" alt="">
                         </div>

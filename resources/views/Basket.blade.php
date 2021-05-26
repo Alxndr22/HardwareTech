@@ -87,10 +87,11 @@
 
                 <div class="amount_price">
                     <div id="second-page_amount">
-                        <img src="{{ asset('images/left-arrow.svg') }}" alt="">
-                        <p id="second-page_amount_digit">1</p>                      {{--  Number from SQL  --}}
-                        <img style="transform: rotate(180deg)" src="{{ asset('images/left-arrow.svg') }}" alt="arrow">
+                        <img id="button_minus1" src="{{ asset('images/left-arrow.svg') }}" alt="">
+                        <input type="number" readonly step="1" min="1" max="10" id="second-page_amount_digit" name="quantity" value="1" title="Qty">
+                        <img id="button_plus1" style="transform: rotate(180deg)" src="{{ asset('images/left-arrow.svg') }}" alt="1">
                     </div>
+
                     <p class="item_price">34 499 ₴</p>
                 </div>
 
@@ -109,10 +110,28 @@
 
                 <div class="amount_price">
                     <div id="second-page_amount">
-                        <img src="{{ asset('images/left-arrow.svg') }}" alt="">
-                        <p id="second-page_amount_digit">1</p>                      {{--  Number from SQL  --}}
-                        <img style="transform: rotate(180deg)" src="{{ asset('images/left-arrow.svg') }}" alt="arrow">
+                        <img id="button_minus2" src="{{ asset('images/left-arrow.svg') }}" alt="">
+                        <input type="number" readonly step="1" min="1" max="10" id="second-page_amount_digit" name="quantity" value="1" title="Qty">
+                        <img id="button_plus2" style="transform: rotate(180deg)" src="{{ asset('images/left-arrow.svg') }}" alt="1">
                     </div>
+                    <script>
+                        var numCount = document.getElementById('second-page_amount_digit');
+                        var plusBtn = document.getElementById('button_plus1');
+                        var minusBtn = document.getElementById('button_minus1');
+                        plusBtn.onclick = function() {
+                            var qty = parseInt(numCount.value);
+                            var max = parseInt(numCount.max)
+                            if (qty < max)
+                                qty = qty + 1;
+                            numCount.value = qty;
+                        }
+                        minusBtn.onclick = function() {
+                            var qty = parseInt(numCount.value);
+                            if (qty > 1)
+                                qty = qty - 1;
+                            numCount.value = qty;
+                        }
+                    </script>
                     <p class="item_price">34 499 ₴</p>
                 </div>
                 <a href="/"  class="item_delete">

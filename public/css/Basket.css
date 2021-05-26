@@ -64,9 +64,12 @@ hr {
     width: 30px;
 }
 #second-page_amount_digit {
+    text-align: center;
+    all: unset;
+    width: 45px;
     font-family: "Fira Sans", serif;
     font-size: 30px;
-    margin: 0 20px 0 20px;
+    margin: 0 0 0 20px;
 }
 .item_price {
     font-family: "Fira Sans", serif;
@@ -250,6 +253,8 @@ hr {
     }
     #second-page_amount_digit {
         font-size: 25px;
+        width: 40px;
+        margin: 0 -5px 0 20px;
     }
     .item_delete img {
         width: 20px;
@@ -297,6 +302,8 @@ hr {
     }
     #second-page_amount_digit {
         font-size: 23px;
+        width: 38px;
+        margin: 0 -10px 0 20px;
     }
     .item_delete img {
         width: 18px;
@@ -332,8 +339,9 @@ hr {
         width: 16px;
     }
     #second-page_amount_digit {
+        width: 34px;
         font-size: 19px;
-        margin: 0 10px 0 10px;
+        margin: 0 -10px 0 10px;
     }
     .item_delete img {
         width: 16px;

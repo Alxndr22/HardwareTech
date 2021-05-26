@@ -116,9 +116,11 @@ a {
     width: 40px;
 }
 #second-page_amount_digit {
+    all: unset;
+    width: 55px;
     font-family: "Fira Sans", serif;
     font-size: 40px;
-    margin: 0 20px 0 20px;
+    margin: 0 5px 0 30px;
 }
 .button_basket {
     margin-top: 50px;
@@ -510,7 +512,9 @@ body.lock {
         width: 25px;
     }
     #second-page_amount_digit {
+        width: 45px;
         font-size: 30px;
+        margin: 0 0 0 30px;
     }
 
     #third-page_title {
@@ -634,8 +638,9 @@ body.lock {
         width: 21px;
     }
     #second-page_amount_digit {
+        width: 41px;
         font-size: 26px;
-        margin: 0 18px 0 18px;
+        margin: 0 0 0 18px;
     }
     #second-page_amount_comparison {
         width: 43%;
