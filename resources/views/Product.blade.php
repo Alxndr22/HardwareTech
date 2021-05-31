@@ -59,22 +59,16 @@
                     <a class="pp_img" href="#popup1">
                         @if(!empty($products[0]->image))
                             <img src="{{ asset('images/Container/' . $products[0]->image) }}" alt="{{ $products[0]->name }}">
-{{--                        @else--}}
-{{--                            <img src="{{ asset('images/no_image.png') }}" alt='{{ $products[0]->name }}'>--}}
                         @endif
                     </a>
                     <a class="pp_img" href="#popup2">
                         @if(!empty($products[1]->image))
                             <img src="{{ asset('images/Container/' . $products[1]->image) }}" alt="{{ $products[0]->name }}">
-{{--                        @else--}}
-{{--                            <img src="{{ asset('images/no_image.png') }}" alt='{{ $products[0]->name }}'>--}}
                         @endif
                     </a>
                     <a class="pp_img" href="#popup3">
                         @if(!empty($products[2]->image))
                             <img src="{{ asset('images/Container/' . $products[2]->image) }}" alt="{{ $products[0]->name }}">
-{{--                        @else--}}
-{{--                            <img src="{{ asset('images/no_image.png') }}" alt='{{ $products[0]->name }}'>--}}
                         @endif
                     </a>
                 </div>
@@ -116,7 +110,7 @@
                         </div>
                     </div>
                     <div class="button_basket">
-                        <a href="">
+                        <a href="{{ url('add-to-cart/'.$products[0]->id) }}">
                             <img src="{{ asset('images/shopping-basket.svg') }}">
                             <p class="button_basket_text">В кошик</p>
                         </a>
@@ -145,8 +139,6 @@
                         </a>
                         @if(!empty($products[0]->image))
                             <img style="width: 100%" src="{{ asset('images/Container/' . $products[0]->image) }}" alt="{{ $products[0]->name }}">
-                        @else
-                            <img style="width: 100%" src="{{ asset('images/no_image.png') }}" alt='{{ $products[0]->name }}'>
                         @endif
                     </div>
                 </div>
@@ -160,8 +152,6 @@
                         </a>
                         @if(!empty($products[1]->image))
                             <img style="width: 100%" src="{{ asset('images/Container/' . $products[1]->image) }}" alt="{{ $products[0]->name }}">
-                        @else
-                            <img style="width: 100%" src="{{ asset('images/no_image.png') }}" alt='{{ $products[0]->name }}'>
                         @endif
                     </div>
                 </div>
@@ -175,8 +165,6 @@
                         </a>
                         @if(!empty($products[2]->image))
                             <img style="width: 100%" src="{{ asset('images/Container/' . $products[2]->image) }}" alt="{{ $products[0]->name }}">
-                        @else
-                            <img style="width: 100%" src="{{ asset('images/no_image.png') }}" alt='{{ $products[0]->name }}'>
                         @endif
                     </div>
                 </div>

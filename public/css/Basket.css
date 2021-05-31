@@ -47,7 +47,7 @@ hr {
     box-shadow: rgba(0,0,0,0.26) 2px 2px;
 }
 .item_title {
-    max-width: 500px;
+    width: 500px;
     font-family: "Fira Sans", serif;
     font-size: 22px;
 }
@@ -63,7 +63,7 @@ hr {
 #second-page_amount img {
     width: 30px;
 }
-#second-page_amount_digit {
+.second-page_amount_digit {
     text-align: center;
     all: unset;
     width: 45px;
@@ -71,12 +71,32 @@ hr {
     font-size: 30px;
     margin: 0 0 0 20px;
 }
+
+.item_price > input {
+    all: unset;
+    font-family: "Fira Sans", serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: #243D56;
+    text-align: center;
+    width: 130px;
+}
+
 .item_price {
     font-family: "Fira Sans", serif;
     font-weight: bold;
     font-size: 40px;
     color: #243D56;
+    text-align: center;
+    width: 180px;
 }
+.item_sum {
+    font-family: "Fira Sans", serif;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+}
+
 .item_delete img {
     width: 25px;
 }
@@ -85,13 +105,17 @@ hr {
 }
 #sum {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
 }
-#sum p {
+#sum input {
+    all: unset;
     margin-top: 0;
     font-family: "Fira Sans", serif;
     font-weight: bold;
     font-size: 36px;
+    text-align: center;
+    width: 150px;
 }
 #sum_title {
     font-size: 46px;
@@ -218,10 +242,10 @@ hr {
     }
 
     .item_title {
-        max-width: 300px;
+        width: 300px;
         font-size: 20px;
     }
-    .item_price {
+    .item_price > input, .item_price {
         font-size: 34px;
     }
 }
@@ -239,10 +263,10 @@ hr {
         width: 100px;
     }
     .item_title {
-        max-width: 300px;
+        width: 300px;
         font-size: 18px;
     }
-    .item_price {
+    .item_price, .item_price > input {
         font-size: 28px;
     }
     .amount_price {
@@ -251,7 +275,7 @@ hr {
     #second-page_amount img {
         width: 20px;
     }
-    #second-page_amount_digit {
+    .second-page_amount_digit {
         font-size: 25px;
         width: 40px;
         margin: 0 -5px 0 20px;
@@ -291,16 +315,16 @@ hr {
         width: 80px;
     }
     .item_title {
-        max-width: 250px;
+        width: 250px;
         font-size: 16px;
     }
-    .item_price {
+    .item_price, .item_price > input {
         font-size: 25px;
     }
     #second-page_amount img {
         width: 18px;
     }
-    #second-page_amount_digit {
+    .second-page_amount_digit {
         font-size: 23px;
         width: 38px;
         margin: 0 -10px 0 20px;
@@ -326,10 +350,10 @@ hr {
     }
 
     .item_title {
-        max-width: 240px;
+        width: 240px;
         font-size: 15px;
     }
-    .item_price {
+    .item_price, .item_price > input {
         font-size: 21px;
     }
     .amount_price {
@@ -338,7 +362,7 @@ hr {
     #second-page_amount img {
         width: 16px;
     }
-    #second-page_amount_digit {
+    .second-page_amount_digit {
         width: 34px;
         font-size: 19px;
         margin: 0 -10px 0 10px;
@@ -361,7 +385,7 @@ hr {
         width: 60px;
     }
     .item_title {
-        max-width: 190px;
+        width: 190px;
         font-size: 15px;
     }
 
@@ -399,12 +423,12 @@ hr {
 }
 @media (max-width: 430px) {
     .item_title {
-        max-width: 120px;
+        width: 120px;
         font-size: 13px;
     }
 }
 @media (max-width: 400px) {
-    .item_price {
+    .item_price, .item_price > input {
         font-size: 19px;
     }
 

@@ -11,6 +11,14 @@
     margin-right: auto;
 }
 .catalog_and_search {
+    width: 100%;
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.catalog_and_search form {
+    width: 100%;
     height: 230px;
     display: flex;
     align-items: center;
@@ -104,7 +112,7 @@
     .search2 input {
         width: 300px;
     }
-    .catalog_and_search {
+    .catalog_and_search, .catalog_and_search form {
         height: 160px;
     }
 
@@ -122,7 +130,7 @@
         margin-top: 60px;
     }
 
-    .catalog_and_search {
+    .catalog_and_search, .catalog_and_search form {
         height: 100px;
     }
     .search2 input {

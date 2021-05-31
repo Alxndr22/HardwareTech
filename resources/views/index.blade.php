@@ -22,9 +22,28 @@
             <a href="/basket" id="cart-icon">
                 <img src="{{ asset('images/add-to-cart.svg') }}">
             </a>
-            <a href="/authorization" id="user-icon">
-                <img src="{{ asset('images/user.svg') }}">
-            </a>
+            @if( auth()->check() )
+                <div id="profile_and_logout">
+                    <a href="/profile" id="user-icon">
+                        <img src="{{ asset('images/user.svg') }}">
+                    </a>
+                    <div>
+                        <a href="/profile">{{ auth()->user()->name }}</a>
+                        <a id="logout" href="/logout">Вийти</a>
+                    </div>
+                </div>
+
+            @else
+                <div id="profile_and_logout">
+                    <a href="/authorization" id="user-icon">
+                        <img src="{{ asset('images/user.svg') }}">
+                    </a>
+{{--                    <a href="/authorization" id="enter">--}}
+{{--                        <span>Ввійти</span>--}}
+{{--                    </a>--}}
+
+                </div>
+            @endif
             <a href="#menu_list" id="menu">
                 <img src="{{ asset('images/Menu.svg') }}">
             </a>

@@ -12,6 +12,13 @@
 @endsection
 
 @section('main_content')
+{{--    <script>--}}
+{{--        $(document).ready(function() {--}}
+{{--            $('#submit_btn').click(function() {--}}
+{{--                alert('clicked');--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
     <div id="catalog_list" class="catalog_list">
         <a href="#header" class="popup_area"></a>
         <div class="catalog_list_body">
@@ -94,10 +101,10 @@
             @else
                 <form action = "/container/search" method = "post">
                     <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-                    <div class="catalog2">
+                    <a href="#catalog_list" class="catalog2">
                         <img src="{{ asset('images/dots-menu (black).svg') }}">
                         <p id="catalog2_text">Каталог</p>
-                    </div>
+                    </a>
                     <div class="search2">
                         <input type="text" placeholder="  Пошук..." name="search">
                         <button type="submit">
@@ -245,7 +252,25 @@
 
         <div class="third-right">
             <ul class="catalog">
+                <?php $counter = 0; ?>
                 @foreach($products as $product)
+                    <input type="hidden" id="pro_id<?php echo $counter;?>" value="{{ $product->id }}">
+{{--                    <script>--}}
+{{--                        $(document).ready(function() {--}}
+{{--                            <?for ($i = 0; $i < $counter; $i++) {?>--}}
+{{--                                $('#submit_btn<?php echo $i;?>').click(function () {--}}
+{{--                                    var pro_id<?php echo $i;?> = $('#pro_id<?php echo $i;?>').val();--}}
+{{--                                    $.ajax({--}}
+{{--                                        type: 'get',--}}
+{{--                                        url: '<?php echo url('/add-to-cart');?>/' + pro_id<?php echo $i;?>,--}}
+{{--                                        success: function () {--}}
+{{--                                            alert('nice');--}}
+{{--                                        }--}}
+{{--                                    });--}}
+{{--                                });--}}
+{{--                            <?php }?>--}}
+{{--                        });--}}
+{{--                    </script>--}}
                 <li class="list_item">
                     <div class="ph">
                         <a href="{{ url('product', [$product->id]) }}">
@@ -259,15 +284,78 @@
                         </a>
                     </div>
                     <div class="button_basket">
-                        <a href="">
+                        <a href="{{ url('add-to-cart/'.$product->id) }}">
                             <img src="{{ asset('images/shopping-basket.svg') }}">
                             <p class="button_basket_text">В кошик</p>
                         </a>
                     </div>
+                    <div id="display_item"></div>
                 </li>
+                        <?php $counter++; ?>
                 @endforeach
             </ul>
         </div>
     </div>
 @endsection
+{{--<script>--}}
+{{--    $(document).ready(function () {--}}
+{{--        $('#submit_btn').click(function (e) {--}}
+{{--            e.preventDefault();--}}
 
+{{--            $.ajaxSetup({--}}
+{{--                headers: {--}}
+{{--                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('main_content')--}}
+{{--                }--}}
+{{--            });--}}
+
+{{--            $.ajax({--}}
+{{--                url: {{ url('add-to-cart/'.$product->id) }},--}}
+{{--                method: "POST",--}}
+{{--                data: {--}}
+{{--                    'id': {{$product->id}},--}}
+{{--                },--}}
+{{--                success: function () {--}}
+{{--                    $('#display_item').html('Success');--}}
+{{--                },--}}
+{{--            });--}}
+{{--        });--}}
+{{--    });--}}
+{{--</script>--}}
+
+{{--@section('scripts')--}}
+{{--    <script type="text/javascript">--}}
+{{--        $(function() {--}}
+{{--            $(".button").click(function() {--}}
+{{--                $.ajax({--}}
+{{--                    type: "POST",--}}
+{{--                    url: {{ url('add-to-cart/'.$product->id) }},--}}
+{{--                    data: {_token: '{{ csrf_token() }}',--}}
+{{--                    success: function() {--}}
+{{--                        $('#contact_form').html("<div id='message'></div>");--}}
+{{--                        $('#message').html("<h2>Contact Form Submitted!</h2>")--}}
+{{--                            .append("<p>We will be in touch soon.</p>")--}}
+{{--                            .hide()--}}
+{{--                            .fadeIn(1500, function() {--}}
+{{--                                $('#message').append("<img id='checkmark' src='images/check.png' />");--}}
+{{--                            });--}}
+{{--                    }--}}
+{{--                });--}}
+{{--                return false;--}}
+{{--            })--}}
+{{--        });--}}
+{{--        --}}{{--$(".item_delete").click(function (e) {--}}
+{{--        --}}{{--    e.preventDefault();--}}
+{{--        --}}{{--    var ele = $(this);--}}
+{{--        --}}{{--    if(confirm("Are you sure")) {--}}
+{{--        --}}{{--        $.ajax({--}}
+{{--        --}}{{--            url: '{{ url('remove-from-cart') }}',--}}
+{{--        --}}{{--            method: "DELETE",--}}
+{{--        --}}{{--            data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},--}}
+{{--        --}}{{--            success: function (response) {--}}
+{{--        --}}{{--                window.location.reload();--}}
+{{--        --}}{{--            }--}}
+{{--        --}}{{--        });--}}
+{{--        --}}{{--    }--}}
+{{--        --}}{{--});--}}
+{{--    </script>--}}
+{{--@endsection--}}

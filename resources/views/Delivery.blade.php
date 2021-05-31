@@ -2,7 +2,6 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/Delivery.css') }}" >
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/search.css') }}" >
     <script
         src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
@@ -19,40 +18,6 @@
             <img src="{{asset('images/DeliveryBanner.jpg')}}" alt="1">
             <div class="text_before_banner">
                 <p class="slogan" id="top-slogan">Доставка / Оплата</p>
-            </div>
-        </div>
-    </div>
-    <div id="catalog_list" class="catalog_list">
-        <a href="#header" class="popup_area"></a>
-        <div class="catalog_list_body">
-            <div class="catalog_list_content">
-                <a href="#header"  class="popup_close">
-                    <img src="{{ asset('images/letter-x.svg') }}">
-                </a>
-                <a id="menu_list_link" href="/Videocard"><img src="{{ asset('images/video-card.svg') }}"><p class="menu_item">Відеокарти</p></a>
-                <a id="menu_list_link" href="/Motherboard"><img src="{{ asset('images/motherboard.svg') }}"><p class="menu_item">Материнські плати</p></a>
-                <a id="menu_list_link" href="/Processor"><img src="{{ asset('images/cpu.svg') }}"><p class="menu_item">Процесори</p></a>
-                <a id="menu_list_link" href="/Ram"><img src="{{ asset('images/ram.svg') }}"><p class="menu_item">Оперативна пам'ять</p></a>
-                <a id="menu_list_link" href="/Body"><img src="{{ asset('images/body.svg') }}"><p class="menu_item">Корпуси</p></a>
-                <a id="menu_list_link" href="/Power"><img src="{{ asset('images/power-supply.svg') }}"><p class="menu_item">Блоки живлення</p></a>
-                <a id="menu_list_link" href="/HDD"><img src="{{ asset('images/hdd.svg') }}"><p class="menu_item">Жорсткі диски</p></a>
-            </div>
-            <a href="#header" class="catalog_list_area"></a>
-        </div>
-    </div>
-    <div class="catalog-page_delivery">
-        <div class="catalog_and_search">
-            <a href="#catalog_list" class="catalog2">
-                <img src="{{ asset('images/dots-menu (black).svg') }}">
-                <p id="catalog2_text">Каталог</p>
-            </a>
-            <div class="search2">
-                <input type="text" placeholder="  Пошук..." >
-                <button type="submit">
-                    <div id="search-icon">
-                        <img src="{{ asset('images/search.svg') }}">
-                    </div>
-                </button>
             </div>
         </div>
     </div>

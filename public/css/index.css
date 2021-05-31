@@ -41,17 +41,40 @@ div.inner{
     display: flex;
 }
 
-#pics > a {
+#pics > a, #pics > div > a {
     height: 45px;
-    width: 45px;
+    width: 70px;
+    filter: invert(100%);
+}
+
+#pics > div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 45px;
+    width: 70px;
     filter: invert(100%);
 }
 
 #cart-icon{
     margin-right:20px;
 }
-#user-icon{
-    margin-right:60px;
+#menu {
+    margin-left: 60px;
+}
+#profile_and_logout {
+    display: flex;
+    font-family: "Ubuntu", serif;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 15px;
+}
+#logout {
+    color: #12b8b2;
+}
+#enter {
+    display: flex;
+    align-items: center;
 }
 
 
@@ -222,9 +245,12 @@ div.inner{
         width: 95%;
         min-width: 0;
     }
-    #pics > a {
+    #pics > a, #pics > div > a {
         height: 30px;
         width: 30px;
+    }
+    #pics > div > div {
+        height: 35px;
     }
     .logo{
         width: 215px;
@@ -236,6 +262,17 @@ div.inner{
         margin-right:40px;
     }
     #footer{
+        display: none;
+    }
+}
+@media(max-width: 600px){
+    #menu {
+        margin-left: 20px;
+    }
+    #user-icon{
+        display: none;
+    }
+    #cart-icon{
         display: none;
     }
 }
@@ -257,7 +294,7 @@ div.inner{
         width: 150px;
     }
 
-    #pics > a {
+    #pics > a, #pics > div > a{
         height: 22px;
         width: 22px;
         filter: invert(100%);

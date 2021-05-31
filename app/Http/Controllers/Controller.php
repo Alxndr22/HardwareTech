@@ -33,6 +33,7 @@ class Controller extends BaseController
                 INNER JOIN products p ON c.id = p.category_id WHERE c.category = ?', [$categories[5]]);
         $hdds = DB::select('SELECT p.id, p.small_image, p.name, price FROM categories c
                 INNER JOIN products p ON c.id = p.category_id WHERE c.category = ?', [$categories[6]]);
+
         return view('LandingDesktop', ['gpus' => $gpus, 'mbs' => $mbs, 'cpus' => $cpus, 'rams' => $rams,
             'frames' => $frames, 'supplies' => $supplies, 'hdds' => $hdds])->
         with('pict', 'images/LandingBanner.jpg',)->with('slogan', ['top' => 'Сучасне комп’ютерне обладнання',

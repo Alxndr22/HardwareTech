@@ -62,6 +62,7 @@ a {
 }
 
 #second-page {
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -133,6 +134,7 @@ hr {
 @media (max-width: 767px) {
     #first-page{
         margin-top: 60px;
+        height: 500px;
     }
     #second-page {
         width: 100%;
@@ -162,6 +164,9 @@ hr {
     }
 }
 @media (max-width: 500px) {
+    #first-page{
+        height: 400px;
+    }
     hr {
         width: 160px;
     }

@@ -34,18 +34,21 @@
     </div>
     <div id="catalog-page">
         <div class="catalog_and_search">
-            <a href="#catalog_list" class="catalog2">
-                <img src="{{ asset('images/dots-menu (black).svg') }}">
-                <p id="catalog2_text">Каталог</p>
-            </a>
-            <div class="search2">
-                <input type="text" placeholder="  Пошук..." >
-                <button type="submit">
-                    <div id="search-icon">
-                        <img src="{{ asset('images/search.svg') }}">
-                    </div>
-                </button>
-            </div>
+            <form action = "/container/search" method = "post">
+                <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+                <a href="#catalog_list" class="catalog2">
+                    <img src="{{ asset('images/dots-menu (black).svg') }}">
+                    <p id="catalog2_text">Каталог</p>
+                </a>
+                <div class="search2">
+                    <input type="text" placeholder="  Пошук..." name="search">
+                    <button type="submit">
+                        <div id="search-icon">
+                            <img src="{{ asset('images/search.svg') }}">
+                        </div>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
     <script>
@@ -74,77 +77,139 @@
             });
         });</script>
 
-
+<form method="POST" action="/add-order">
+    {{ csrf_field() }}
     <div id="second-page">
         <p id="second-page_title">Кошик</p>
         <hr>
-        <div class="item">
-            <div class="item_inner">
-                <a class="item_img" href="/">
-                    <img src="{{ asset('images/product/MSI GeForce RTX3060 12Gb VENTUS 3X OC.jpg') }}" alt="MSI GeForce RTX3060 12Gb VENTUS 3X OC 1">
-                </a>
-                <a href="/"><p class="item_title">MSI GeForce RTX3060 12Gb VENTUS 3X OC (XM-45218322-1y) </p></a>
+        <?php $counter = 0; ?>
+        @if (!empty($new_total))
+            @if($total = $new_total)
+            @endif
+        @elseif($total = 0)
+        @endif
+        @if(session('cart'))
+            @foreach(session('cart') as $id => $details)
+                @if ($total += $details['price'] * $details['quantity']) @endif
+                @if ($id = $details['id']) @endif
+                <div class="item">
+                    <div class="item_inner">
+                        <a class="item_img" href="/">
+                            <img src="{{ asset('images/Container/'.$details['image']) }}" alt="{{$details['name']}}">
+                        </a>
+                        <a href="/"><p class="item_title">{{$details['name']}}</p></a>
 
-                <div class="amount_price">
-                    <div id="second-page_amount">
-                        <img id="button_minus1" src="{{ asset('images/left-arrow.svg') }}" alt="">
-                        <input type="number" readonly step="1" min="1" max="10" id="second-page_amount_digit" name="quantity" value="1" title="Qty">
-                        <img id="button_plus1" style="transform: rotate(180deg)" src="{{ asset('images/left-arrow.svg') }}" alt="1">
+                        <div class="amount_price">
+                            <div id="second-page_amount">
+                                <img id="button_minus<?php echo $counter;?>" src="{{ asset('images/left-arrow.svg') }}" alt="">
+                                <input class ="second-page_amount_digit" type="number" readonly step="1" min="1" max="10" id="second-page_amount_digit<?php echo $counter;?>" name="quantity" value="{{$details['quantity']}}" title="Qty">
+                                <img id="button_plus<?php echo $counter;?>" style="transform: rotate(180deg)" src="{{ asset('images/left-arrow.svg') }}" alt="1">
+                            </div>
+                            <script>
+                                $(document).ready(function() {
+                                    <?php $maxP = count(session('cart'));
+                                    for ($i = 0; $i < $maxP; $i++) {?>
+                                    var numCount<?php echo $i;?> = document.getElementById('second-page_amount_digit<?php echo $i;?>');
+                                    var plusBtn<?php echo $i;?> = document.getElementById('button_plus<?php echo $i;?>');
+                                    var minusBtn<?php echo $i;?> = document.getElementById('button_minus<?php echo $i;?>');
+                                    var price<?php echo $i;?> = document.getElementById('price<?php echo $i;?>');
+                                    var price_val<?php echo $i;?> = parseInt(price<?php echo $i;?>.value);
+                                    plusBtn<?php echo $i;?>.onclick = function() {
+                                        var total = document.getElementById('sum_value');
+                                        var tot_val = parseInt(total.value);
+                                        var qty<?php echo $i;?> = parseInt(numCount<?php echo $i;?>.value);
+                                        var max<?php echo $i;?> = parseInt(numCount<?php echo $i;?>.max)
+                                        if (qty<?php echo $i;?> < max<?php echo $i;?>) {
+                                            qty<?php echo $i;?> = qty<?php echo $i;?> + 1;
+                                            total.value = tot_val + price_val<?php echo $i;?>
+                                        }
+                                        numCount<?php echo $i;?>.value = qty<?php echo $i;?>;
+                                    }
+                                    minusBtn<?php echo $i;?>.onclick = function() {
+                                        var total = document.getElementById('sum_value');
+                                        var tot_val = parseInt(total.value);
+                                        var qty<?php echo $i;?> = parseInt(numCount<?php echo $i;?>.value);
+                                        if (qty<?php echo $i;?> > 1) {
+                                            qty<?php echo $i;?> = qty<?php echo $i;?> - 1;
+                                            total.value = tot_val - price_val<?php echo $i;?>
+                                        }
+                                        numCount<?php echo $i;?>.value = qty<?php echo $i;?>;
+                                    }
+                                    {{--$.ajax({--}}
+                                    {{--    type:get,--}}
+                                    {{--    url: '<?php echo url('/totalPrice');?>/'+@json($id)'/'.@json($total),--}}
+                                    {{--    success:function() {--}}
+                                    {{--        alert('nice');--}}
+                                    {{--    }--}}
+                                    {{--})--}}
+                                    <?php }?>
+                                })
+                            </script>
+                            <div class="item_price">
+                                <input type="number" readonly value="{{$details['price']}}" id="price<?php echo $counter;?>" name="item_price">
+                                <span> ₴</span>
+                            </div>
+                        </div>
+
+
+                        <a href="{{ url('remove-from-cart/'.$details['id']) }}"  class="item_delete">
+                            <img src="{{ asset('images/letter-x.svg') }}">
+                        </a>
                     </div>
-
-                    <p class="item_price">34 499 ₴</p>
+                    <hr class="item_hr">
                 </div>
-
-                <a href="/"  class="item_delete">
-                    <img src="{{ asset('images/letter-x.svg') }}">
-                </a>
-            </div>
-            <hr class="item_hr">
-        </div>
-        <div class="item">
-            <div class="item_inner">
-                <a class="item_img" href="/">
-                    <img src="{{ asset('images/product/MSI GeForce RTX3060 12Gb VENTUS 3X OC.jpg') }}" alt="MSI GeForce RTX3060 12Gb VENTUS 3X OC 1">
-                </a>
-                <a href="/"><p class="item_title">MSI GeForce RTX3060 12Gb VENTUS 3X OC (XM-45218322-1y) </p></a>
-
-                <div class="amount_price">
-                    <div id="second-page_amount">
-                        <img id="button_minus2" src="{{ asset('images/left-arrow.svg') }}" alt="">
-                        <input type="number" readonly step="1" min="1" max="10" id="second-page_amount_digit" name="quantity" value="1" title="Qty">
-                        <img id="button_plus2" style="transform: rotate(180deg)" src="{{ asset('images/left-arrow.svg') }}" alt="1">
-                    </div>
-                    <script>
-                        var numCount = document.getElementById('second-page_amount_digit');
-                        var plusBtn = document.getElementById('button_plus1');
-                        var minusBtn = document.getElementById('button_minus1');
-                        plusBtn.onclick = function() {
-                            var qty = parseInt(numCount.value);
-                            var max = parseInt(numCount.max)
-                            if (qty < max)
-                                qty = qty + 1;
-                            numCount.value = qty;
-                        }
-                        minusBtn.onclick = function() {
-                            var qty = parseInt(numCount.value);
-                            if (qty > 1)
-                                qty = qty - 1;
-                            numCount.value = qty;
-                        }
-                    </script>
-                    <p class="item_price">34 499 ₴</p>
-                </div>
-                <a href="/"  class="item_delete">
-                    <img src="{{ asset('images/letter-x.svg') }}">
-                </a>
-            </div>
-            <hr class="item_hr">
-        </div>
+            <?php $counter++; ?>
+            @endforeach
+        @endif
         <div id="sum">
-            <p id="sum_title">Всього:</p>
-            <p>38 088 ₴</p>
+            <p class="item_sum" id="sum_title">Всього:</p>
+            <input id="sum_value" type="number" min="{{ $total }}" readonly value="{{ $total }}" name="total">
+            <span class="item_sum"> ₴</span>
         </div>
-    </div>
+{{--        <div class="item">--}}
+{{--            <div class="item_inner">--}}
+{{--                <a class="item_img" href="/">--}}
+{{--                    <img src="{{ asset('images/product/MSI GeForce RTX3060 12Gb VENTUS 3X OC.jpg') }}" alt="MSI GeForce RTX3060 12Gb VENTUS 3X OC 1">--}}
+{{--                </a>--}}
+{{--                <a href="/"><p class="item_title">MSI GeForce RTX3060 12Gb VENTUS 3X OC (XM-45218322-1y) </p></a>--}}
+
+{{--                <div class="amount_price">--}}
+{{--                    <div id="second-page_amount">--}}
+{{--                        <img id="button_minus2" src="{{ asset('images/left-arrow.svg') }}" alt="">--}}
+{{--                        <input type="number" readonly step="1" min="1" max="10" id="second-page_amount_digit" name="quantity" value="1" title="Qty">--}}
+{{--                        <img id="button_plus2" style="transform: rotate(180deg)" src="{{ asset('images/left-arrow.svg') }}" alt="1">--}}
+{{--                    </div>--}}
+{{--                    <script>--}}
+{{--                        var numCount = document.getElementById('second-page_amount_digit');--}}
+{{--                        var plusBtn = document.getElementById('button_plus1');--}}
+{{--                        var minusBtn = document.getElementById('button_minus1');--}}
+{{--                        plusBtn.onclick = function() {--}}
+{{--                            var qty = parseInt(numCount.value);--}}
+{{--                            var max = parseInt(numCount.max)--}}
+{{--                            if (qty < max)--}}
+{{--                                qty = qty + 1;--}}
+{{--                            numCount.value = qty;--}}
+{{--                        }--}}
+{{--                        minusBtn.onclick = function() {--}}
+{{--                            var qty = parseInt(numCount.value);--}}
+{{--                            if (qty > 1)--}}
+{{--                                qty = qty - 1;--}}
+{{--                            numCount.value = qty;--}}
+{{--                        }--}}
+{{--                    </script>--}}
+{{--                    <p class="item_price">34 499 ₴</p>--}}
+{{--                </div>--}}
+{{--                <a href="/"  class="item_delete">--}}
+{{--                    <img src="{{ asset('images/letter-x.svg') }}">--}}
+{{--                </a>--}}
+{{--            </div>--}}
+{{--            <hr class="item_hr">--}}
+{{--        </div>--}}
+{{--        <div id="sum">--}}
+{{--            <p id="sum_title">Всього:</p>--}}
+{{--            <p>38 088 ₴</p>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div id="third-page">
         <p id="second-page_title">Оплата замовлення</p>
         <hr id="payment_hr" >
@@ -152,19 +217,19 @@
         <div class="inner_element">
             <div class="field_row">
                 <label for="your_comment_input" class="field_label" >Ім'я</label>
-                <input class="field_input" type="text" name="name" value="">
+                <input class="field_input" type="text" name="name" value="@if(auth()->user()){{auth()->user()->name}}@endif">
             </div>
             <div class="field_row">
                 <label for="your_comment_input" class="field_label" >Прізвище</label>
-                <input class="field_input" type="text" name="name" value="">
+                <input class="field_input" type="text" name="surname" value="@if(auth()->user()){{auth()->user()->surname}}@endif">
             </div>
             <div class="field_row">
                 <label for="your_comment_input" class="field_label" >Телефон</label>
-                <input class="field_input" type="text" name="name" value="">
+                <input class="field_input" type="text" name="phone" value="@if(auth()->user()){{auth()->user()->phone}}@endif">
             </div>
             <div class="field_row">
                 <label for="your_comment_input" class="field_label" >Почта</label>
-                <input class="field_input" type="text" name="name" value="">
+                <input class="field_input" type="text" name="email" value="@if(auth()->user()){{auth()->user()->email}}@endif">
             </div>
         </div>
 
@@ -239,4 +304,37 @@
 
         <input id="field_button" type="submit" name="doGO" value="Оформити замовлення">
     </div>
+    </div>
+</form>
 @endsection
+
+{{--@section('scripts')--}}
+{{--    <script type="text/javascript">--}}
+{{--        --}}{{--$(".update-cart").click(function (e) {--}}
+{{--        --}}{{--    e.preventDefault();--}}
+{{--        --}}{{--    var ele = $(this);--}}
+{{--        --}}{{--    $.ajax({--}}
+{{--        --}}{{--        url: '{{ url('update-cart') }}',--}}
+{{--        --}}{{--        method: "patch",--}}
+{{--        --}}{{--        data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id"), quantity: ele.parents("tr").find(".quantity").val()},--}}
+{{--        --}}{{--        success: function (response) {--}}
+{{--        --}}{{--            window.location.reload();--}}
+{{--        --}}{{--        }--}}
+{{--        --}}{{--    });--}}
+{{--        --}}{{--});--}}
+{{--        $(".item_delete").click(function (e) {--}}
+{{--            e.preventDefault();--}}
+{{--            var ele = $(this);--}}
+{{--            if(confirm("Are you sure")) {--}}
+{{--                $.ajax({--}}
+{{--                    url: '{{ url('remove-from-cart') }}',--}}
+{{--                    method: "DELETE",--}}
+{{--                    data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},--}}
+{{--                    success: function (response) {--}}
+{{--                        window.location.reload();--}}
+{{--                    }--}}
+{{--                });--}}
+{{--            }--}}
+{{--        });--}}
+{{--    </script>--}}
+{{--@endsection--}}
