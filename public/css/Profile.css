@@ -1,0 +1,573 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+
+#info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    margin-top: 150px;
+}
+.info-block{
+    height: fit-content;
+    width: 1170px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.info-block div>p{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: left;
+    margin-left: 1%;
+    white-space: pre;
+}
+.info-label{
+    font-weight: bold;
+    width: fit-content;
+}
+.info-label>p{
+    font-size: 43px;
+    margin-bottom: 10px;
+}
+#edit-profile{
+    display: flex;
+    align-items: center;
+}
+#edit-profile img {
+    width: 30px;
+    margin-right: 10px;
+}
+#edit{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    color: #243D56;
+}
+#label{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+hr{
+    margin: 0 0 45px 0;
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: #C4C4C4;
+    border: none;
+}
+#order-sep{
+    width: 350px;
+    margin: auto;
+}
+
+.info-content{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+.info-content p{
+    font-size: 23px;
+}
+
+#quest{
+    flex-direction: row;
+    justify-content: center;
+    height: fit-content;
+    margin-left: 10px;
+}
+
+#quest-right{
+    width: 80%;
+    color: #243D56;
+
+}
+#quest-left{
+    width: 20%;
+}
+
+div#quest > div > p{
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+}
+
+div.order{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 180px;
+    margin-top: 20px;
+}
+p.top-text{
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 400;
+    color: #00000099;
+
+}
+p.bottom-text{
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: bold;
+
+}
+div.order-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 65%;
+    height: 180px;
+}
+div.status{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+    width: 40%;
+}
+div.sum{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+    width: 50%;
+}
+div.pict{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 22%;
+    height: inherit;
+    margin-right: 5%;
+}
+.item-pic{
+    width: 150px;
+    height: 150px;
+}
+.arrow{
+    width: 40px;
+}
+
+/* ================== Add in your project ================ */
+
+.popup {
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.6s ease 0s;
+}
+.popup_body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+}
+.popup_content {
+    background-color: #fff;
+    color: black;
+    min-width: 400px;
+    max-width: 500px;
+    padding: 60px 30px 30px 30px;
+    position: relative;
+    transition: all 0.6s ease 0s;
+    opacity: 0;
+    transform: translate(0px, -100%);
+}
+.popup_close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.popup_close img {
+    width: 23px;
+}
+.popup_area {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.popup:target {
+    opacity: 1;
+    visibility: visible;
+}
+.popup:target .popup_content {
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+body.lock {
+    overflow: hidden;
+}
+
+.field_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.field_label {
+    font-family: "Fira Sans", serif;
+    font-size: 18px;
+    padding: 10px 0;
+}
+.field_input {
+    height: 25px;
+    width: 200px;
+    border: 1px solid black;
+}
+#field_button {
+    background-color: #DBBB80;
+    font-family: "Ubuntu", serif;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    margin-top: 40px;
+    border: 1px solid #97763A;
+    transition: background-color 1s;
+    width: 40%;
+    height: 50px;
+}
+#field_button:hover {
+    background-color: #e5cfa7;
+}
+body.lock {
+    overflow: hidden;
+}
+
+
+/* ========================================= */
+
+
+
+
+
+@media (max-width: 1250px) {
+    .info-block{
+        width: 960px;
+    }
+    .info-label > p{
+        font-size: 40px;
+    }
+    div.info-content p{
+        font-size: 25px;
+    }
+    div.order{
+        height: 160px;
+    }
+    div.order-info{
+        width: 65%;
+        height: 160px;
+    }
+    div.status{
+        width: 40%;
+    }
+    div.sum{
+        width: 50%;
+    }
+    div.pict{
+        width: 22%;
+        margin-right: 5%;
+    }
+    .item-pic{
+        width: 120px;
+        height: 120px;
+    }
+    .arrow{
+        width: 37px;
+    }
+    #order-sep{
+        width: 300px;
+    }
+}
+@media (max-width: 1024px) {
+    .info-block{
+        width: 750px;
+    }
+    .info-label > p{
+        font-size: 37px;
+    }
+    div.info-content p{
+        font-size: 21px;
+    }
+    div#quest > div > p{
+        font-size: 18px;
+    }
+    div.status{
+        width: 50%;
+    }
+    div.sum{
+        width: 50%;
+    }
+    div.pict{
+        width: 25%
+    }
+    .item-pic{
+        width: 110px;
+        height: 110px;
+    }
+    .arrow{
+        width: 34px;
+    }
+    #order-sep{
+        width: 250px;
+    }
+}
+@media(max-width: 768px) {
+    #info {
+        margin-bottom: 120px;
+    }
+    .info-block{
+        width: 550px;
+    }
+    .info-label > p{
+        font-size: 30px;
+    }
+    div.info-content p{
+        font-size: 21px;
+    }
+    div#quest > div > p{
+        font-size: 17px;
+    }
+    #quest-right{
+        width: 70%;
+    }
+    #quest-left{
+        width: 30%;
+    }
+    div.order{
+        height: 280px;
+    }
+    div.order-info{
+        height: 280px;
+        width: 35%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    div.status{
+        display: block;
+        height: 40%;
+        width: fit-content;
+    }
+    div.sum{
+        display: block;
+        height: 40%;
+        width: fit-content;
+    }
+    div.pict{
+        width: 45%
+    }
+    .item-pic{
+        width: 170px;
+        height: 170px;
+    }
+    .arrow{
+        width: 40px;
+    }
+
+    #edit-profile img {
+        width: 25px;
+    }
+    #edit {
+        font-size: 20px;
+    }
+}
+@media (max-width: 575px) {
+    .info-block{
+        width: 480px;
+    }
+    .info-label > p{
+        font-size: 27px;
+    }
+    div.info-content p{
+        font-size: 20px;
+    }
+    div#quest > div > p{
+        font-size: 15px;
+    }
+    div.order{
+        height: 260px;
+    }
+    div.order-info{
+        height: 260px;
+        width: 35%;
+    }
+    div.status{
+        display: block;
+        height: 40%;
+        width: fit-content;
+    }
+    div.sum{
+        display: block;
+        height: 40%;
+        width: fit-content;
+    }
+    div.pict{
+        width: 45%
+    }
+    .item-pic{
+        width: 150px;
+        height: 150px;
+    }
+
+    #order-sep{
+        width: 220px;
+    }
+
+    #edit-profile img {
+        width: 23px;
+    }
+    #edit {
+        font-size: 17px;
+    }
+}
+@media (max-width: 500px) {
+    .info-block{
+        width: 350px;
+    }
+    .info-label > p{
+        font-size: 25px;
+    }
+    div.info-content p{
+        font-size: 17px;
+    }
+    div#quest > div > p{
+        font-size: 14px;
+    }
+    #quest-right{
+        width: 60%;
+    }
+    #quest-left{
+        width: 40%;
+    }
+    div.order{
+        height: 240px;
+    }
+    div.order-info{
+        height: 240px;
+        width: 35%;
+    }
+    div.status{
+        display: block;
+        height: 40%;
+        width: fit-content;
+    }
+    div.sum{
+        display: block;
+        height: 40%;
+        width: fit-content;
+    }
+    div.pict{
+        width: 40%;
+        margin-right:0;
+    }
+    .item-pic{
+        width: 130px;
+        height: 130px;
+    }
+    .arrow{
+        display: none;
+    }
+    #order-sep{
+        width: 200px;
+    }
+
+    #edit-profile img {
+        margin-bottom: 10px;
+    }
+    #edit {
+        display: none;
+    }
+
+    /* ================== Add in your project ================ */
+    .popup_content {
+        min-width: 300px;
+        max-width: 320px;
+    }
+    .field_label {
+        font-size: 16px;
+    }
+    .field_input {
+        width: 130px;
+    }
+    /* ======================================= */
+}
+@media(max-width: 375px) {
+    .info-block{
+        width: 97%;
+    }
+    .info-label > p{
+        font-size: 23px;
+    }
+    div.info-content p{
+        font-size: 15px;
+    }
+    #quest-right{
+        width: 60%;
+    }
+    #quest-left{
+        width: 40%;
+    }
+    div.order{
+        height: 240px;
+    }
+    div.order-info{
+        height: 240px;
+        width: 35%;
+    }
+    div.status{
+        display: block;
+        height: 40%;
+        width: fit-content;
+    }
+    div.sum{
+        display: block;
+        height: 40%;
+        width: fit-content;
+    }
+    div.pict{
+        width: 45%;
+        margin-right:0;
+    }
+    .item-pic{
+        width: 110px;
+        height: 110px;
+    }
+    #order-sep{
+        width: 150px;
+    }
+
+
+    /* ================== Add in your project ================ */
+    .field_label {
+        font-size: 14px;
+    }
+    /* ======================================= */
+
+
+}

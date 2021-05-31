@@ -1,102 +1,69 @@
-#first-page{
+#picture-page{
     margin-top: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 666px;
 
-    background-size: cover;
-    background-repeat: no-repeat;
+    height: 737px;
 }
-#first-page div{
+.banner {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 300px;
-    width: 1000px;
-
+    align-items: center;
+    width: 100%;
+    height: 737px;
+    overflow: hidden;    /* ph */
 }
-.slogan{
+.banner img {
+    position: absolute;
+    width: 100%;        /* ph */
+    height: 100%;       /* ph */
+    object-fit: cover;   /* ph */
+    object-position: center;   /* ph */
+}
+.text_before_banner {
+    z-index: 300;
+}
+.slogan {
     text-shadow: 0 4px 4px #000000;
     text-align: center;
     color: #ffffff;
-    width: 100%;
 }
 
 #top-slogan {
     height: 63px;
     font-family: Ubuntu, monospace ;
     font-weight: bold;
-    font-size: 57px;
+    font-size: calc(20px + 37 * (100vw / 1920));
 }
 
-#bottom-slogan{
+#bottom-slogan {
     height: 110px;
-
     font-family: Open Sans, sans-serif;
     font-weight: normal;
-    font-size: 40px;
-    width: 1000px;
-}
-@media(max-width: 1024px){
-    #first-page > div{
-        height: 300px;
-        width: 750px;
-
-    }
-    .slogan{
-        text-shadow: 0 3px 3px #000000;
-    }
-
-    #top-slogan {
-        height: 59px;
-        font-size: 53px;
-    }
-
-    #bottom-slogan{
-        width: 650px;
-        height: 106px;
-        font-size: 36px;
-    }
+    font-size: calc(15px + 25 * (100vw / 1920));
 }
 
-@media(max-width: 768px)  {
-    #first-page{
-        margin-top: 65px;
-    }
-    #first-page > div{
-        width: 500px;
-    }
-    #bottom-slogan{
-
-        width: 500px;
-
+@media (max-width: 1024px) {
+    #picture-page, .banner {
+        height: 500px;
     }
 }
-@media(max-width: 500px){
-    #first-page > div{
-        width: 375px;
-    }
-    .slogan{
-        text-shadow: 0 2px 2px #000000;
-    }
-
-    #top-slogan {
-        height: 52px;
-        font-size: 46px;
-    }
-
-    #bottom-slogan{
-        height: 99px;
-        width: 375px;
-        font-size: 29px;
+@media (max-width: 767px) {
+    #picture-page {
+        margin-top: 60px;
     }
 }
-@media(max-width: 375px)  {
-    #first-page{
-        margin-top: 55px;
+@media (max-width: 500px) {
+    #picture-page, .banner {
+        height: 400px;
     }
 }
+@media (max-width: 375px) {
+    #picture-page {
+        margin-top: 50px;
+    }
+}
+

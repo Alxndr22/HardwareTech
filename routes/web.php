@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,15 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('LandingDesktop')->with('pict', 'images/LandingBanner.jpg');
-});
+Route::get('/', [Controller::class, 'index']);
 Route::get('/info', function () {
-    return view('InfoPage')->with('pict', 'images/Contacts.jpg');
+    return view('InfoPage')->with('pict', 'images/Contacts.jpg')->with('slogan', ['top' => 'Контакти',
+        'bottom' => 'Для будь-яких запитань, пропозицій і не тільки']);
 });
 
 Route::get('product/{id}', [Controller::class, 'viewProduct']);
 Route::get('container/{category}', [Controller::class, 'viewCategory']);
+Route::post('container/search', [SearchController::class, 'postSearch']);
+Route::post('container/search/{category}', [SearchController::class, 'postSearchCategory']);
 
 Route::get('/authorization', function () {
     return view('Authorization');
@@ -32,5 +34,8 @@ Route::get('/basket', function () {
 });
 Route::get('/delivery', function () {
     return view('Delivery');
+});
+Route::get('/authorization2', function () {
+    return view('Profile');
 });
 

@@ -4,8 +4,8 @@
 
 }
 
-
 #info {
+    margin-top: 70px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -13,38 +13,40 @@
     align-items: center;
 }
 .info-block{
-    height: 300px;
+    height: fit-content;
     width: 1170px;
-    margin-top: 3%;;
     display: flex;
     flex-direction: column;
+    margin-bottom: 100px;
 }
 
 .info-block div>p{
     font-family: Fira Sans,sans-serif;
-    font-size: 29px;
+
     font-weight: 400;
     text-align: left;
-    height: 25px;
     margin-left: 1%;
     white-space: pre;
 }
+
+
 
 .info-label{
 
     width: fit-content;
 }
-
-hr{
+.info-label > p{
+    font-size: 29px;
+}
+hr {
+    margin: 0 0 45px 0;
     position: relative;
     width: 100%;
-    margin-left:0;margin-right:0;
     height: 2px;
     background: #C4C4C4;
 }
 
 .info-content{
-    /*border: 1px solid red;*/
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -57,28 +59,24 @@ img.info-icon {
 }
 
 div.callback-number{
-    /*border: 1px solid red;*/
     display: flex;
     align-items: center;
     height: 55px;
 
 }
 div.callback-mail{
-    /*border: 1px solid red;*/
     display: flex;
     align-items: center;
     height: 55px;
 }
 
-div.callback-number p{
+div.callback-number>p{
     margin-bottom: 2.5%;
-    margin-left: 3%;
-    /*font-size: 24px;*/
+    margin-left: 35px;
 }
+
 div.callback-mail p{
-    margin-bottom: 2.5%;
-    margin-left: 3%;
-    /*font-size: 24px;*/
+    margin-left: 35px;
 }
 
 #location{
@@ -86,28 +84,26 @@ div.callback-mail p{
 }
 
 
-#placeholder{
+#placeholder {
+    margin-right: 20px;
     width: 45px;
 }
 
 div.schedule{
-
-    width: 485px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    margin-left: 28px;
 }
 
-div.schedule p{
-    /*font-size: 23px;*/
+div.schedule>p{
     height: 30px;
+    width: 100px;
 }
+
 div.schedule p.time{
     font-size: 23px;
-    height: 10px;
+    height: 28px;
+    margin: 15px;
 }
 
 #office{
@@ -123,20 +119,21 @@ div.schedule p.time{
     width: 640px;
 
 }
+iframe{
+    padding: 20px;
+}
 #office-text{
     width: 530px;
 }
 #top-text{
-
     display: flex;
     flex-direction: row;
-    justify-content: center;
 }
 #bottom-text p{
-    /*font-size: 23px;*/
+    font-size: 21px;
 }
 #callback-number-bottom{
-    /*border: 1px solid red;*/
+
     display: flex;
     align-items: center;
     height: 55px;
@@ -144,8 +141,8 @@ div.schedule p.time{
     margin-left: 5px;
 }
 #numbers{
-    margin-left: 30px;
-    margin-top: 25px;
+    margin-left: 35px;
+    margin-top: 45px;
 }
 #mail-top{
     margin-top: 50px;
@@ -153,19 +150,20 @@ div.schedule p.time{
 #quest{
     flex-direction: row;
     justify-content: center;
-    height: 420px;
+    height: fit-content;
 }
 
 #quest-right{
     width: 54.7%;
-
 }
 #quest-left{
-    margin-top: 12px;
     width: 45.3%;
 }
 
 @media (max-width: 1250px) {
+    #bottom-text .aux_info, #callback-number-bottom p {
+        font-size: 19px;
+    }
     .info-block{
         width: 960px;
     }
@@ -178,8 +176,12 @@ div.schedule p.time{
     div.schedule p.time{
         font-size: 21px;
     }
+
 }
 @media (max-width: 1024px) {
+    #bottom-text .aux_info, #callback-number-bottom p {
+        font-size: 18px;
+    }
     .info-block{
         width: 750px;
     }
@@ -204,35 +206,80 @@ div.schedule p.time{
     }
 }
 @media(max-width: 768px) {
-    .info-block{
+    #bottom-text .aux_info, #callback-number-bottom p {
+        font-size: 17px;
+    }
+    .info-block {
         width: 560px;
     }
-    hr{
+
+    hr {
         width: 560px;
     }
-    .info-block div>p{
+
+    .info-block div > p {
         font-size: 25px;
     }
-    div.info-content p{
+
+    div.info-content p {
         font-size: 19px;
     }
-    div.schedule p.time{
+
+    div.schedule p.time {
         font-size: 19px;
+        height: 15px;
+        margin-top: 14px;
     }
-    #office{
+
+    #office {
         flex-direction: column;
         justify-content: center;
-        height: 420px;
+        height: fit-content;
     }
-    #office-text{
+
+    #office-text {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
-    img.info-icon{
+
+    img.info-icon {
         width: 32px;
+    }
+    #location{
+        height: 70px;
+    }
+    #placeholder{
+        width: 37px;
+    }
+
+    #numbers {
+        margin-left: 25px;
+        margin-top: 40px;
+    }
+
+    div.callback-number > p {
+        margin-left: 25px;
+    }
+
+    div.callback-mail p {
+        margin-left: 25px;
+    }
+    #callback-number-bottom{
+        margin-top: 0;
+    }
+    #office-map{
+        margin: 50px 0;
+        width: 500px;
+        height: 500px;
+    }
+    iframe{
+        padding: 0;
     }
 }
 @media (max-width: 575px) {
+    #bottom-text .aux_info, #callback-number-bottom p {
+        font-size: 15px;
+    }
     .info-block{
         width: 480px;
     }
@@ -240,16 +287,34 @@ div.schedule p.time{
         width: 480px;
     }
     .info-block div>p{
-        font-size: 23px;
+        font-size: 21px;
+    }
+    #location{
+        height: 65px;
     }
     div.info-content p{
         font-size: 17px;
     }
     div.schedule p.time{
         font-size: 17px;
+        margin-top: 18px;
     }
+    #office-map{
+        margin: 50px 0;
+        width: 450px;
+        height: 450px;
+    }
+
 }
 @media (max-width: 500px) {
+    .info-label{
+        width: 350px;
+    }
+    div.info-block >div.info-label>p{
+        white-space: normal;
+        margin-bottom: 30px;
+    }
+
     .info-block{
         width: 365px;
     }
@@ -259,17 +324,79 @@ div.schedule p.time{
     img.info-icon{
         width: 25px;
     }
-}
-@media (max-width: 400px) {
+    #location{
+        height: 60px;
+    }
+    #placeholder{
+        width: 30px;
+    }
+    #office-map{
+        margin: 50px 0;
+        width: 360px;
+        height: 360px;
+    }
 }
 
 @media(max-width: 375px) {
+    #info{
+        display: block;
+        padding: 10px;
+    }
     #office-text{
         display: block;
     }
     #office{
         flex-direction: column;
         justify-content: center;
-        height: 420px;
+        height: fit-content;
+    }
+    #numbers{
+        margin-left: 15px;
+    }
+    div.callback-number>p{
+        margin-left: 15px;
+    }
+    div.callback-mail p{
+        margin-left: 15px;
+    }
+    #mail-top{
+        margin-top: 10px;
+    }
+    .info-label{
+
+        width: 275px;
+    }
+
+    .info-block{
+        width: 275px;
+        margin-bottom: 20px;
+    }
+    hr{
+        width: 275px;
+    }
+    img.info-icon{
+        width: 25px;
+    }
+    #location{
+        height: 55px;
+    }
+    .info-block div>p{
+        font-size: 18px;
+    }
+    div.info-content p{
+        font-size: 14px;
+    }
+    div.schedule p.time{
+        font-size: 14px;
+        margin: 10px 0;
+    }
+    #quest{
+        flex-direction: column;
+    }
+    #office-map{
+        margin: 50px 0;
+        width: 280px;
+        height: 280px;
     }
 }
+

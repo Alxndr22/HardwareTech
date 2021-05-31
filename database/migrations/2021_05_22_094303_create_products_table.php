@@ -18,6 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('quantity');
             $table->float('price');
+            $table->string('main_image');
+            $table->string('small_image');
 
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')

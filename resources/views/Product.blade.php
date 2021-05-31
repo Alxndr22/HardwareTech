@@ -32,18 +32,21 @@
     </div>
     <div id="first-page">
         <div class="catalog_and_search">
-            <a href="#catalog_list" class="catalog2">
-                <img src="{{ asset('images/dots-menu (black).svg') }}">
-                <p id="catalog2_text">Каталог</p>
-            </a>
-            <div class="search2">
-                <input type="text" placeholder="  Пошук..." >
-                <button type="submit">
-                    <div id="search-icon">
-                        <img src="{{ asset('images/search.svg') }}">
-                    </div>
-                </button>
-            </div>
+            <form action = "/container/search" method = "post">
+                <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+                <div class="catalog2">
+                    <img src="{{ asset('images/dots-menu (black).svg') }}">
+                    <p id="catalog2_text">Каталог</p>
+                </div>
+                <div class="search2">
+                    <input type="text" placeholder="  Пошук..." name="search">
+                    <button type="submit">
+                        <div id="search-icon">
+                            <img src="{{ asset('images/search.svg') }}">
+                        </div>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -54,18 +57,30 @@
             <div style="display: flex; width: 90vw">
                 <div id="second-page_left">
                     <a class="pp_img" href="#popup1">
-                        <img src="{{ asset('images/product/MSI GeForce RTX3060 12Gb VENTUS 3X OC.jpg') }}" alt="MSI GeForce RTX3060 12Gb VENTUS 3X OC 1">
+                        @if(!empty($products[0]->image))
+                            <img src="{{ asset('images/Container/' . $products[0]->image) }}" alt="{{ $products[0]->name }}">
+{{--                        @else--}}
+{{--                            <img src="{{ asset('images/no_image.png') }}" alt='{{ $products[0]->name }}'>--}}
+                        @endif
                     </a>
                     <a class="pp_img" href="#popup2">
-                        <img src="{{ asset('images/product/MSI GeForce RTX3060 12Gb VENTUS 3X OC_2.jpg') }}" alt="MSI GeForce RTX3060 12Gb VENTUS 3X OC 2">
+                        @if(!empty($products[1]->image))
+                            <img src="{{ asset('images/Container/' . $products[1]->image) }}" alt="{{ $products[0]->name }}">
+{{--                        @else--}}
+{{--                            <img src="{{ asset('images/no_image.png') }}" alt='{{ $products[0]->name }}'>--}}
+                        @endif
                     </a>
                     <a class="pp_img" href="#popup3">
-                        <img src="{{ asset('images/product/MSI GeForce RTX3060 12Gb VENTUS 3X OC_3.jpg') }}" alt="MSI GeForce RTX3060 12Gb VENTUS 3X OC 3">
+                        @if(!empty($products[2]->image))
+                            <img src="{{ asset('images/Container/' . $products[2]->image) }}" alt="{{ $products[0]->name }}">
+{{--                        @else--}}
+{{--                            <img src="{{ asset('images/no_image.png') }}" alt='{{ $products[0]->name }}'>--}}
+                        @endif
                     </a>
                 </div>
                 <div id="second-page_centre">
                     <a class="pp_img" href="#popup0">
-                        <img src="{{ asset('images/Container/' . $products[0]->image) }}" alt='{{ $products[0]->name }}'>
+                        <img src="{{ asset('images/Container/' . $products[0]->main_image) }}" alt='{{ $products[0]->name }}'>
                     </a>
                 </div>
             </div>
@@ -117,7 +132,7 @@
                         <a href="#header"  class="popup_close">
                             <img src="{{ asset('images/letter-x.svg') }}">
                         </a>
-                        <img style="width: 100%" src="{{ asset('images/Container/' . $products[0]->image) }}" alt='{{ $products[0]->name }}'>
+                        <img style="width: 100%" src="{{ asset('images/Container/' . $products[0]->main_image) }}" alt='{{ $products[0]->name }}'>
                     </div>
                 </div>
             </div>
@@ -128,7 +143,11 @@
                         <a href="#header"  class="popup_close">
                             <img src="{{ asset('images/letter-x.svg') }}">
                         </a>
-                        <img style="width: 100%" src="{{ asset('images/product/MSI GeForce RTX3060 12Gb VENTUS 3X OC_1.png') }}" alt="MSI GeForce RTX3060 12Gb VENTUS 3X OC_1">
+                        @if(!empty($products[0]->image))
+                            <img style="width: 100%" src="{{ asset('images/Container/' . $products[0]->image) }}" alt="{{ $products[0]->name }}">
+                        @else
+                            <img style="width: 100%" src="{{ asset('images/no_image.png') }}" alt='{{ $products[0]->name }}'>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -139,7 +158,11 @@
                         <a href="#header"  class="popup_close">
                             <img src="{{ asset('images/letter-x.svg') }}">
                         </a>
-                        <img style="width: 100%" src="{{ asset('images/product/MSI GeForce RTX3060 12Gb VENTUS 3X OC_2.jpg') }}" alt="MSI GeForce RTX3060 12Gb VENTUS 3X OC_2">
+                        @if(!empty($products[1]->image))
+                            <img style="width: 100%" src="{{ asset('images/Container/' . $products[1]->image) }}" alt="{{ $products[0]->name }}">
+                        @else
+                            <img style="width: 100%" src="{{ asset('images/no_image.png') }}" alt='{{ $products[0]->name }}'>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -150,12 +173,14 @@
                         <a href="#header"  class="popup_close">
                             <img src="{{ asset('images/letter-x.svg') }}">
                         </a>
-                        <img style="width: 100%" src="{{ asset('images/product/MSI GeForce RTX3060 12Gb VENTUS 3X OC_3.jpg') }}" alt="MSI GeForce RTX3060 12Gb VENTUS 3X OC_3">
+                        @if(!empty($products[2]->image))
+                            <img style="width: 100%" src="{{ asset('images/Container/' . $products[2]->image) }}" alt="{{ $products[0]->name }}">
+                        @else
+                            <img style="width: 100%" src="{{ asset('images/no_image.png') }}" alt='{{ $products[0]->name }}'>
+                        @endif
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
@@ -166,26 +191,14 @@
             <hr>
             <div id="perfomance">
                 <div id="performance_column_left">
-                    <p id="perfomance_text">Тип</p>
-                    <p id="perfomance_text">Виробник</p>
-                    <p id="perfomance_text">Сімейство GPU</p>
-                    <p id="perfomance_text">Графічний чіп</p>
-                    <p id="perfomance_text">Інтерфейс підключення до материнської плати</p><br><br>
-                    <p id="perfomance_text">Обсяг відеопам’яті (Мб)</p>
-                    <p id="perfomance_text">Тип пам’яті</p>
-                    <p id="perfomance_text">Розрядність шини пам’яті, біт</p><br><br>
-                    <p id="perfomance_text">Гарантія</p>
+                    @foreach ($tags as $tag)
+                        <p id="perfomance_text">{{ $tag->tag_name }}</p>
+                    @endforeach
                 </div>
                 <div id="performance_column_right">
-                    <p id="perfomance_text">Відеокарта</p>
-                    <p id="perfomance_text">MSI</p>
-                    <p id="perfomance_text">Nvidia</p>
-                    <p id="perfomance_text">GeForce RTX 3060</p>
-                    <p id="perfomance_text">PCI Express 4.0 (x16)</p><br><br>
-                    <p id="perfomance_text">12288</p>
-                    <p id="perfomance_text">GDDR6</p>
-                    <p id="perfomance_text">192</p><br><br>
-                    <p id="perfomance_text">36 місяців</p>
+                    @foreach ($tags as $tag)
+                        <p id="perfomance_text">{{ $tag->tag }}</p>
+                    @endforeach
                 </div>
             </div>
         </div>

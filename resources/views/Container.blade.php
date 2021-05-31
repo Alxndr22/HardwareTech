@@ -8,7 +8,7 @@
         crossorigin="anonymous"></script>
 </head>
 @section('title')
-{{ $products[0]->category }}
+{{ $category }}
 @endsection
 
 @section('main_content')
@@ -57,28 +57,57 @@
         });</script>
     <div class="body-el" id="first-page">
         <div class="banner">
-            <img src="{{asset('images/videocards/Banner(vidocard).jpg')}}" alt="1">
+            @if(!empty($products[0]->cat_image))
+                <img src="{{asset('images/banners/' . $products[0]->cat_image)}}" alt="1">
+            @else
+                <img src="{{asset('images/no_image.png')}}" alt="1">
+            @endif
             <div class="text_before_banner">
-                <p class="slogan" id="top-slogan">{{ $products[0]->category }}</p>
-                <p class="slogan" id="bottom-slogan">{{ $products[0]->slogan }}</p>
+                <p class="slogan" id="top-slogan">{{ $category }}</p>
+                @if(!empty($slogan))
+                    <p class="slogan" id="bottom-slogan">{{ $slogan }}</p>
+                @elseif(!empty($products[0]->slogan))
+                    <p class="slogan" id="bottom-slogan">{{ $products[0]->slogan }}</p>
+                @endif
             </div>
         </div>
     </div>
 
     <div class="body-el" id="second-page">
         <div class="catalog_and_search">
-            <a href="#catalog_list" class="catalog2">
-                <img src="{{ asset('images/dots-menu (black).svg') }}">
-                <p id="catalog2_text">Каталог</p>
-            </a>
-            <div class="search2">
-                <input type="text" placeholder="  Пошук..." >
-                <button type="submit">
-                    <div id="search-icon">
-                        <img src="{{ asset('images/search.svg') }}">
+            @if(!empty($products[0]->category))
+                <form action = "{{ url('container/search', [$products[0]->category]) }}" method = "post">
+                    <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+                    <a href="#catalog_list" class="catalog2">
+                        <img src="{{ asset('images/dots-menu (black).svg') }}">
+                        <p id="catalog2_text">Каталог</p>
+                    </a>
+                    <div class="search2">
+                        <input type="text" placeholder="  Пошук..." name="search">
+                        <button type="submit">
+                            <div id="search-icon">
+                                <img src="{{ asset('images/search.svg') }}">
+                            </div>
+                        </button>
                     </div>
-                </button>
-            </div>
+                </form>
+            @else
+                <form action = "/container/search" method = "post">
+                    <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+                    <div class="catalog2">
+                        <img src="{{ asset('images/dots-menu (black).svg') }}">
+                        <p id="catalog2_text">Каталог</p>
+                    </div>
+                    <div class="search2">
+                        <input type="text" placeholder="  Пошук..." name="search">
+                        <button type="submit">
+                            <div id="search-icon">
+                                <img src="{{ asset('images/search.svg') }}">
+                            </div>
+                        </button>
+                    </div>
+                </form>
+            @endif
         </div>
     </div>
 
@@ -221,7 +250,7 @@
                     <div class="ph">
                         <a href="{{ url('product', [$product->id]) }}">
                             <div class="for_photo">
-                                <img src="{{ asset('images/Container/' . $product->image) }}" alt="{{ $product->name }}">
+                                <img src="{{ asset('images/Container/' . $product->small_image) }}" alt="{{ $product->name }}">
                             </div>
                             <div class="description">
                                 <p class="description_info">{{ $product->name }}</p>

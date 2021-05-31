@@ -27,13 +27,13 @@
                             <img src="{{ asset('images/mail.svg') }}" class="info-icon">
                         </div>
 
-                        <p>business.hardwaretech@gmail.com</p>
+                        <p>hardwaretech@gmail.com</p>
                     </div>
                 </div>
                 <div id="quest-right">
                     <div class="schedule">
-                        <p class="time">Пн-Пт         8:00 - 20:00</p>
-                        <p class="time">Сб-Нд         9:00 - 18:00</p>
+                        <p class="time">Пн-Пт  8:00 - 20:00</p>
+                        <p class="time">Сб-Нд  9:00 - 18:00</p>
                     </div>
                 </div>
 
@@ -79,8 +79,8 @@
                         </div>
                     </div>
                     <div id="bottom-text">
-                        <p>Зберігання товару до 3 днів.</p>
-                        <p>Точну інформацію щодо отримання <br>уточнюйте за номером:</p>
+                        <p class="aux_info">Зберігання товару до 3 днів.</p>
+                        <p class="aux_info">Точну інформацію щодо отримання <br>уточнюйте за номером:</p>
                         <div id="callback-number-bottom">
                             <img src="{{ asset('images/Phone(white).svg') }}" class="info-icon" style="filter: invert(100%)">
                             <p>   +38 066 902-17-23</p>
@@ -89,7 +89,7 @@
                 </div>
                 <div id="office-map">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4277.85280068801!2d30.59958419206118!3d50.39216093464204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c5c6406244c9%3A0xcbd0840007235b46!2z0LLRg9C70LjRhtGPINCm0LXQvdGC0YDQsNC70YzQvdCwLCAyMSwg0JrQuNGX0LIsIDAyMDAw!5e0!3m2!1suk!2sua!4v1616325700219!5m2!1suk!2sua"
-                            width="100%" height="420" style="border:0;" allowfullscreen="" ></iframe>
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" ></iframe>
                 </div>
 
             </div>
