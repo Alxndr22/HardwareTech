@@ -35,10 +35,11 @@ Route::get('remove-from-cart/{id}', [CartController::class, 'remove']);
 Route::get('totalPrice/{id}/{total}', [CartController::class, 'totalPrice']);
 Route::get('/authorization', [RegistrationController::class, 'create']);
 Route::post('register', [RegistrationController::class, 'store']);
-Route::post('/login', [SessionController::class, 'store']);
+Route::post('/login', [SessionController::class, 'login']);
 Route::get('/logout', [SessionController::class, 'destroy']);
 Route::post('/updateUser', [SessionController::class, 'update']);
 Route::post('/add-order', [CartController::class, 'addOrder']);
+Route::post('product/{id}/save-comment', [Controller::class, 'saveComment']);
 
 Route::get('/delivery', function () {
     return view('Delivery');

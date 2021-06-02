@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NotLoggedOrder;
 use App\Models\Order;
 use App\Models\Product;
 
@@ -37,7 +38,7 @@ class CartController extends BaseController
                 $id => [
                     "id" => $id,
                     "name" => $product[0]->name,
-                    "quantity" => 1,
+                    "quantity" => request('quantity') ? request('quantity') : 1,
                     "price" => $product[0]->price,
                     "image" => $product[0]->small_image
                 ]
@@ -47,7 +48,7 @@ class CartController extends BaseController
         }
 
         if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
+            $cart[$id]['quantity'] += request('quantity') ? request('quantity') : 1;
             session()->put('cart', $cart);
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
@@ -55,7 +56,7 @@ class CartController extends BaseController
         $cart[$id] = [
             "id" => $id,
             "name" => $product[0]->name,
-            "quantity" => 1,
+            "quantity" => request('quantity') ? request('quantity') : 1,
             "price" => $product[0]->price,
             "image" => $product[0]->small_image
         ];
@@ -111,7 +112,15 @@ class CartController extends BaseController
         elseif(request('payment') == 'visa-master') {
             $payment = "Visa, Mastercard";
         }
-        $order = new Order(['price' => request('total'), 'delivery' => $delivery, 'payment' => $payment, 'user_id' => auth()->user()->id]);
+        if(auth()->user()) {
+            $order = new Order(['price' => request('total'), 'delivery' => $delivery, 'payment' => $payment,
+                'user_id' => auth()->user()->id, 'name' => request('name'), 'surname' => request('surname'),
+                'phone' => request('phone')]);
+        } else {
+            $order = new NotLoggedOrder(['price' => request('total'), 'delivery' => $delivery, 'payment' => $payment,
+                'name' => request('name'), 'surname' => request('surname'), 'phone' => request('phone'),
+                'email' => request('email')]);
+        }
         $order->save();
         foreach (session('cart') as $cart => $product) {
             $order->products()->attach(Product::where('id', $product['id'])->firstOrFail());

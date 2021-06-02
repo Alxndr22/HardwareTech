@@ -20,10 +20,10 @@ class SessionController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 //auth()->attempt(request(['email', 'password'])) == false
 //auth()->attempt(['email'=> $request->input('email2'), 'password' => $request->input('password2')]) == false or auth()->attempt(['phone'=> $request->input('email2'), 'password' => $request->input('password2')]) == false
-    public function store()
+    public function login()
     {
         if (auth()->attempt(request(['email', 'password'])) == false) {
-            return back()->with('error', 'The email or password is incorrect, please try again.');
+            return back()->with('error_login', 'Невірний Email або пароль! Спробуйте ще раз.');
         }
         return redirect()->to('/profile');
     }
@@ -39,7 +39,7 @@ class SessionController extends BaseController
                 'email' => 'required|email|max:255',
             ]);
         } catch (ValidationException $e) {
-            return back()->with('error', 'Validation fail.');
+            return back()->with('error', 'Введені некоректні дані! Спробуйте ще раз.');
         }
         if(request('email') == auth()->user()->email or !User::where('email', '=', request('email'))->exists()) {
             $UpdateDetails = User::where('email', auth()->user()->email)->firstOrFail();
@@ -52,7 +52,7 @@ class SessionController extends BaseController
             auth()->logout();
             auth()->login($UpdateDetails);
         } else {
-            return back()->with('error', 'A user with this email already exists. Please choose another one.');
+            return back()->with('error', 'Користувач з даним email вже існує! Введіть будь-ласка інший email.');
         }
         return redirect()->to('/profile');
     }
@@ -67,9 +67,9 @@ class SessionController extends BaseController
     public function profile()
     {
 //        Order::where('user_id', auth()->user()->id)
-        $orders = DB::select('select o.id, o.price, o.created_at, main_image from users u
+        $orders = DB::select('select o.price, o.created_at, main_image from users u
             inner join orders o on u.id = o.user_id inner join order_product op on o.id = op.order_id
             inner join products p on p.id = op.product_id where u.id = ? order by o.id desc', [auth()->user()->id]);
-        return view('Profile', ['orders' => $orders]);
+        return view('Profile', ['orders' => $orders, 'order_num' => count($orders)]);
     }
 }

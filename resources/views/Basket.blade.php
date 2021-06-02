@@ -162,54 +162,10 @@
             @endforeach
         @endif
         <div id="sum">
-            <p class="item_sum" id="sum_title">Всього:</p>
+            <p id="sum_title">Всього:</p>
             <input id="sum_value" type="number" min="{{ $total }}" readonly value="{{ $total }}" name="total">
-            <span class="item_sum"> ₴</span>
+            <p id="sum_title" style="margin-right: 0">₴</p>
         </div>
-{{--        <div class="item">--}}
-{{--            <div class="item_inner">--}}
-{{--                <a class="item_img" href="/">--}}
-{{--                    <img src="{{ asset('images/product/MSI GeForce RTX3060 12Gb VENTUS 3X OC.jpg') }}" alt="MSI GeForce RTX3060 12Gb VENTUS 3X OC 1">--}}
-{{--                </a>--}}
-{{--                <a href="/"><p class="item_title">MSI GeForce RTX3060 12Gb VENTUS 3X OC (XM-45218322-1y) </p></a>--}}
-
-{{--                <div class="amount_price">--}}
-{{--                    <div id="second-page_amount">--}}
-{{--                        <img id="button_minus2" src="{{ asset('images/left-arrow.svg') }}" alt="">--}}
-{{--                        <input type="number" readonly step="1" min="1" max="10" id="second-page_amount_digit" name="quantity" value="1" title="Qty">--}}
-{{--                        <img id="button_plus2" style="transform: rotate(180deg)" src="{{ asset('images/left-arrow.svg') }}" alt="1">--}}
-{{--                    </div>--}}
-{{--                    <script>--}}
-{{--                        var numCount = document.getElementById('second-page_amount_digit');--}}
-{{--                        var plusBtn = document.getElementById('button_plus1');--}}
-{{--                        var minusBtn = document.getElementById('button_minus1');--}}
-{{--                        plusBtn.onclick = function() {--}}
-{{--                            var qty = parseInt(numCount.value);--}}
-{{--                            var max = parseInt(numCount.max)--}}
-{{--                            if (qty < max)--}}
-{{--                                qty = qty + 1;--}}
-{{--                            numCount.value = qty;--}}
-{{--                        }--}}
-{{--                        minusBtn.onclick = function() {--}}
-{{--                            var qty = parseInt(numCount.value);--}}
-{{--                            if (qty > 1)--}}
-{{--                                qty = qty - 1;--}}
-{{--                            numCount.value = qty;--}}
-{{--                        }--}}
-{{--                    </script>--}}
-{{--                    <p class="item_price">34 499 ₴</p>--}}
-{{--                </div>--}}
-{{--                <a href="/"  class="item_delete">--}}
-{{--                    <img src="{{ asset('images/letter-x.svg') }}">--}}
-{{--                </a>--}}
-{{--            </div>--}}
-{{--            <hr class="item_hr">--}}
-{{--        </div>--}}
-{{--        <div id="sum">--}}
-{{--            <p id="sum_title">Всього:</p>--}}
-{{--            <p>38 088 ₴</p>--}}
-{{--        </div>--}}
-{{--    </div>--}}
     <div id="third-page">
         <p id="second-page_title">Оплата замовлення</p>
         <hr id="payment_hr" >
@@ -229,7 +185,7 @@
             </div>
             <div class="field_row">
                 <label for="your_comment_input" class="field_label" >Почта</label>
-                <input class="field_input" type="text" name="email" value="@if(auth()->user()){{auth()->user()->email}}@endif">
+                <input class="field_input" <?php if (auth()->user()) echo 'readonly'?> type="text" name="email" value="@if(auth()->user()){{auth()->user()->email}}@endif">
             </div>
         </div>
 
@@ -270,7 +226,7 @@
         <div id="runner_inner" class="inner_element">
             <div class="field_row">
                 <label for="your_comment_input" class="field_label" >Адреса</label>
-                <input class="field_input" placeholder=" Вулиця, будинок, квартира" type="text" name="name" value="">
+                <input class="field_input" placeholder=" Вулиця, будинок, квартира" type="text" value="">
             </div>
             <p class="additional_info">* Вартість доставки, при замовленні на суму до 5 тис. - 60₴. Більше 5 тис. - 1₴.</p>
         </div>
@@ -307,34 +263,3 @@
     </div>
 </form>
 @endsection
-
-{{--@section('scripts')--}}
-{{--    <script type="text/javascript">--}}
-{{--        --}}{{--$(".update-cart").click(function (e) {--}}
-{{--        --}}{{--    e.preventDefault();--}}
-{{--        --}}{{--    var ele = $(this);--}}
-{{--        --}}{{--    $.ajax({--}}
-{{--        --}}{{--        url: '{{ url('update-cart') }}',--}}
-{{--        --}}{{--        method: "patch",--}}
-{{--        --}}{{--        data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id"), quantity: ele.parents("tr").find(".quantity").val()},--}}
-{{--        --}}{{--        success: function (response) {--}}
-{{--        --}}{{--            window.location.reload();--}}
-{{--        --}}{{--        }--}}
-{{--        --}}{{--    });--}}
-{{--        --}}{{--});--}}
-{{--        $(".item_delete").click(function (e) {--}}
-{{--            e.preventDefault();--}}
-{{--            var ele = $(this);--}}
-{{--            if(confirm("Are you sure")) {--}}
-{{--                $.ajax({--}}
-{{--                    url: '{{ url('remove-from-cart') }}',--}}
-{{--                    method: "DELETE",--}}
-{{--                    data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},--}}
-{{--                    success: function (response) {--}}
-{{--                        window.location.reload();--}}
-{{--                    }--}}
-{{--                });--}}
-{{--            }--}}
-{{--        });--}}
-{{--    </script>--}}
-{{--@endsection--}}

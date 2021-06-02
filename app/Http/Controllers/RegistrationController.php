@@ -36,16 +36,20 @@ class RegistrationController extends BaseController
                 'password_confirm' => 'required|min:6'
             ]);
         } catch (ValidationException $e) {
-            return back()->with('error', 'Validation fail.');
+            return back()->with('error', 'Введені некоректні дані! Спробуйте ще раз.');
         }
 
         if(request('password') != request('password_confirm')) {
             return back()->with('error', 'Passwords don\'t match.');
         }
-        $user = New User(request(['name', 'surname', 'mid_name', 'phone', 'email', 'password']));
-        $user->save();
 
-        auth()->login($user);
+        if(!User::where('email', '=', request('email'))->exists()) {
+            $user = New User(request(['name', 'surname', 'mid_name', 'phone', 'email', 'password']));
+            $user->save();
+            auth()->login($user);
+        }  else {
+            return back()->with('error', 'Користувач з даним email вже існує! Введіть будь-ласка інший email.');
+        }
 
         return redirect()->to('/profile');
     }

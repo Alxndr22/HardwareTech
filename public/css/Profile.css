@@ -263,6 +263,97 @@ body.lock {
 /* ========================================= */
 
 
+.item {
+    margin-top: 20px;
+    /*display: none;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    transform: translate(600%, 0px);
+    transition: height 500ms 500ms, opacity 500ms 0ms, padding 500ms 0ms;
+    overflow: hidden;
+    opacity: 0.0;
+    height: 0;
+}
+.item.display {
+    transform: translate(0px, 0px);
+
+    height: 140px;
+    opacity: 1.0;
+    transition: height 500ms 100ms, opacity 500ms 500ms, padding 500ms 0ms;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+.item_inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.item_img img {
+    width: 100px;
+    box-shadow: rgba(0,0,0,0.26) 2px 2px;
+}
+.item_title {
+    width: 400px;
+    font-family: "Fira Sans", serif;
+    font-size: 22px;
+}
+.amount_price {
+    width: 330px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#second-page_amount {
+    display: flex;
+}
+#second-page_amount img {
+    width: 30px;
+}
+.second-page_amount_digit {
+    text-align: center;
+    all: unset;
+    width: 45px;
+    font-family: "Fira Sans", serif;
+    font-size: 30px;
+    margin: 0 0 0 20px;
+}
+
+.item_price > input {
+    all: unset;
+    font-family: "Fira Sans", serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: #243D56;
+    text-align: center;
+    width: 130px;
+}
+
+.item_price {
+    font-family: "Fira Sans", serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: #243D56;
+    text-align: center;
+    width: 180px;
+}
+.item_sum {
+    font-family: "Fira Sans", serif;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+}
+.item_hr {
+    width: 200px;
+}
+
 
 
 

@@ -34,10 +34,10 @@
         <div class="catalog_and_search">
             <form action = "/container/search" method = "post">
                 <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-                <div class="catalog2">
+                <a href="#catalog_list" class="catalog2">
                     <img src="{{ asset('images/dots-menu (black).svg') }}">
                     <p id="catalog2_text">Каталог</p>
-                </div>
+                </a>
                 <div class="search2">
                     <input type="text" placeholder="  Пошук..." name="search">
                     <button type="submit">
@@ -80,11 +80,12 @@
             </div>
             <div id="second-page_right">
                 <p id="second-page_price">{{ $products[0]->price }} ₴</p>
-                <div id="second-page_amount_comparison_basket">
+                <form id="second-page_amount_comparison_basket" method="get" action="{{ url('add-to-cart/'.$products[0]->id) }}">
+                    <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
                     <div id="second-page_amount_comparison">
                         <div id="second-page_amount">
                             <img id="button_minus" src="{{ asset('images/left-arrow.svg') }}" alt="">
-                            <input type="number" readonly step="1" min="1" max="10" id="second-page_amount_digit" name="quantity" value="1" title="Qty">
+                            <input type="number" readonly step="1" min="1" max="{{ $products[0]->quantity }}" id="second-page_amount_digit" name="quantity" value="1" title="Qty">
                             <img id="button_plus" style="transform: rotate(180deg)" src="{{ asset('images/left-arrow.svg') }}" alt="{{ $products[0]->name }}">
                         </div>
                         <script>
@@ -109,13 +110,12 @@
                             <img src="{{ asset('images/comparison.svg') }}" alt="">
                         </div>
                     </div>
-                    <div class="button_basket">
-                        <a href="{{ url('add-to-cart/'.$products[0]->id) }}">
-                            <img src="{{ asset('images/shopping-basket.svg') }}">
-                            <p class="button_basket_text">В кошик</p>
-                        </a>
-                    </div>
-                </div>
+                        <input class="button_basket" type="submit" value="В кошик" style="background-image: url({{ asset('images/shopping-basket.svg') }});">
+{{--                        <label for="sub">--}}
+{{--                            <img src="{{ asset('images/shopping-basket.svg') }}">--}}
+{{--                            <p class="button_basket_text">В кошик</p>--}}
+{{--                        </label>--}}
+                </form>
             </div>
 
 
@@ -193,26 +193,60 @@
         <div id="third-page_right">
             <p id="third-page_title">Відгуки [21]</p>       {{--  Number from SQL  --}}
             <hr style="width: 300px; margin-bottom: 33px">
-            <div class="review-row">
-                10
-                <div class="review" id="review-top"></div>
-            </div>
-            <div class="review-row" style="width: 170px">
-                5
-                <div class="review"></div>
-            </div>
-            <div class="review-row" style="width: 60px">
-                2
-                <div class="review"></div>
-            </div>
-            <div class="review-row" style="width: 40px">
-                1
-                <div class="review"></div>
-            </div>
-            <div class="review-row" style="width: 70px">
-                3
-                <div class="review"></div>
-            </div>
+            <?php $counter = 0; ?>
+{{--            <div class="review-row" style="width: 60px" id="count<?php echo $counter;?>">--}}
+{{--                <input type="number" readonly value="@if(!empty($groupedScores[0]->sumScore)){{$groupedScores[0]->sumScore}}@else{{0}}@endif" id="score<?php echo $counter;?>">--}}
+{{--                <div class="review" id="review-top"></div>--}}
+{{--            </div>--}}
+
+
+            @if(!empty($groupedScores))
+                <div class="review-row" style="width: 60px" id="count0">
+                    <input type="number" readonly value="@if(!empty($groupedScores[$counter]) and $groupedScores[$counter]->maxScore == 5){{$groupedScores[$counter++]->sumScore}}@else{{0}}@endif" id="score0">
+                    <div class="review" id="review-top"></div>
+                </div>
+                <div class="review-row" style="width: 60px" id="count1">
+                    <input type="number" readonly value="@if(!empty($groupedScores[$counter]) and $groupedScores[$counter]->maxScore == 4){{$groupedScores[$counter++]->sumScore}}@else{{0}}@endif" id="score1">
+                    <div class="review"></div>
+                </div>
+                <div class="review-row" style="width: 60px" id="count2">
+                    <input type="number" readonly value="@if(!empty($groupedScores[$counter]) and $groupedScores[$counter]->maxScore == 3){{$groupedScores[$counter++]->sumScore}}@else{{0}}@endif" id="score2">
+                    <div class="review"></div>
+                </div>
+                <div class="review-row" style="width: 60px" id="count3">
+                    <input type="number" readonly value="@if(!empty($groupedScores[$counter]) and $groupedScores[$counter]->maxScore == 2){{$groupedScores[$counter++]->sumScore}}@else{{0}}@endif" id="score3">
+                    <div class="review"></div>
+                </div>
+                <div class="review-row" style="width: 60px" id="count4">
+                    <input type="number" readonly value="@if(!empty($groupedScores[$counter]) and $groupedScores[$counter]->maxScore == 1){{$groupedScores[$counter++]->sumScore}}@else{{0}}@endif" id="score4">
+                    <div class="review"></div>
+                </div>
+            @else
+                @for($i = 0; $i < 5; $i++)
+                    <div class="review-row" style="width: 60px" id="count<?php echo $counter;?>">
+                        <input type="number" readonly value="0" id="score<?php echo $counter;?>">
+                        <div class="review"></div>
+                    </div>
+                    <?php $counter++; ?>
+                @endfor
+            @endif
+
+{{--            @if(!empty($groupedScores[$i]->sumScore)){{$groupedScores[$i]->sumScore - $until}}@else{{0}}@endif--}}
+            <script>
+                $(document).ready(function() {
+                    <?php $maxP = 5;
+                    for ($i = 0; $i < $maxP; $i++) {?>
+                    var score<?php echo $i;?> = document.getElementById('score<?php echo $i;?>');
+                    var pillar<?php echo $i;?> = document.getElementById('count<?php echo $i;?>');
+                    var sc<?php echo $i;?> = parseInt(score<?php echo $i;?>.value);
+                    var max = 50 + sc<?php echo $i;?> * 20;
+                    if(max <= 300)
+                        pillar<?php echo $i;?>.style.width = (max).toString();
+                    else
+                        pillar<?php echo $i;?>.style.width = (300).toString();
+                    <?php }?>
+                })
+            </script>
             <div id="button-review">
                 <a href="#popup">
                     <p id="button-review_text">Переглянути</p>
@@ -226,25 +260,22 @@
                         <a href="#header" class="popup_close">
                             <img src="{{ asset('images/letter-x.svg') }}">
                         </a>
-
-                        <p class="comment_header">
-                            Дмитро
-                        </p>
-                        <p class="comment_body">
-                            Чудова відеокарта. Вже майже відмайнив її вартість.
-                        </p>
-                        <hr>
-                        <p class="comment_header">
-                            Максим Бородько
-                        </p>
-                        <p class="comment_body">
-                            Підскажіть, будь-ласка, кількість Hdmi виходів.
-                        </p>
-                        <hr>
-                        <form id="your_comment_form" action="/data" method="post">
+                        @foreach($comments as $comment)
+                            <p class="comment_header">
+                                {{$comment->name}}
+                            </p>
+                            <p>
+                                {{$comment->score}}
+                            </p>
+                            <p class="comment_body">
+                                {{$comment->text}}
+                            </p>
+                            <hr>
+                        @endforeach
+                        <form id="your_comment_form" action="{{ url('product', [$products[0]->id, 'save-comment']) }}" method="post">
                             @csrf
                             <label for="your_comment_input" id="your_comment_label" >Ім'я</label>
-                            <input id="your_comment_input" type="text" name="name" value="">
+                            <input id="your_comment_input" type="text" name="name" value="@if(auth()->user()){{auth()->user()->name}}@endif">
                             <div class="rating-area">
                                 <input type="radio" id="star-5" name="rating" value="5">
                                 <label for="star-5" title="Оценка «5»"></label>
@@ -266,6 +297,7 @@
             </div>
             <script>
                 $(document).ready(function () {
+
                     $("#button-review").click(function ()  {
                         if ( $("body").hasClass("lock")) {
                             $("body").removeClass("lock");
@@ -308,8 +340,56 @@
     </div>
 
     <div id="fourth-page">
-        <hr style="width: 100%">
-        <p id="fourth-page_text">Схожі товари</p>
-        <hr style="width: 100%">
+        <div class="category-label">
+            <hr style="width: 100%">
+            <p id="fourth-page_text">Схожі товари</p>
+            <hr style="width: 100%">
+        </div>
+        <div id="fourth-page_inner">
+            <img class="button_minus" id="button_minus0" src="{{ asset('images/left-arrow.svg') }}" alt="">
+            <div id="fourth-page_middle">
+                <div id="fourth-page_large">
+                    <ul id="catalog0" class="catalog">
+                        @foreach($likeProduct as $prod)
+                            <li class="list_item">
+                                <div class="ph">
+                                    <a href="{{ url('product', [$prod->id]) }}">
+                                        <div class="for_photo">
+                                            <img src="{{asset('images/Container/' . $prod->small_image)}}">
+                                        </div>
+                                        <div class="description">
+                                            <p class="description_info">{{$prod->name}}</p>
+                                            <p class="description_price">{{$prod->price}} ₴</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="button_basket_slider">
+                                    <a href="">
+                                        <img src="{{ asset('images/shopping-basket.svg') }}">
+                                        <p class="button_basket_slider_text">В кошик</p>
+                                    </a>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <img class="button_plus" id="button_plus0" src="{{ asset('images/left-arrow.svg') }}" alt="">
+        </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $width = parseInt($(".list_item").css("width"));
+            $("#button_minus0").click(function () {
+                if (parseInt($("#catalog0").css("left")) < -100) {
+                    $("#catalog0").css("right", "-=" + $width);
+                }
+            });
+            $("#button_plus0").click(function ()  {
+                if (parseInt($("#catalog0").css("left")) > (-4 * $width)) {
+                    $("#catalog0").css("right", "+=" + $width);
+                }
+            });
+
+        });</script>
 @endsection

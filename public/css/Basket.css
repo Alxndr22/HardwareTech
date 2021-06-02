@@ -107,15 +107,19 @@ hr {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    font-family: "Fira Sans", serif;
+    font-weight: bold;
+    font-size: 42px;
+    text-align: center;
 }
 #sum input {
     all: unset;
     margin-top: 0;
     font-family: "Fira Sans", serif;
     font-weight: bold;
-    font-size: 36px;
+    font-size: 42px;
     text-align: center;
-    width: 150px;
+    width: 130px;
 }
 #sum_title {
     font-size: 46px;
@@ -224,7 +228,6 @@ hr {
 }
 
 
-
 @media (min-width: 1250px) {
     #first-page {
         width: 1100px;
@@ -269,6 +272,9 @@ hr {
     .item_price, .item_price > input {
         font-size: 28px;
     }
+    .item_price > input {
+        width: 90px;
+    }
     .amount_price {
         width: 230px;
     }
@@ -283,8 +289,11 @@ hr {
     .item_delete img {
         width: 20px;
     }
-    #sum p {
+    #sum p, #sum input, .item_sum {
         font-size: 30px;
+    }
+    #sum input {
+        width: 100px;
     }
     #sum_title {
         font-size: 40px;
@@ -333,7 +342,7 @@ hr {
         width: 18px;
     }
 
-    #sum p {
+    #sum p, #sum input, .item_sum {
         font-size: 26px;
     }
     #sum_title {
@@ -355,6 +364,9 @@ hr {
     }
     .item_price, .item_price > input {
         font-size: 21px;
+    }
+    .item_price > input {
+        width: 70px;
     }
     .amount_price {
         width: 170px;
@@ -389,6 +401,7 @@ hr {
         font-size: 15px;
     }
 
+
 }
 @media (max-width: 500px) {
     #second-page {
@@ -404,12 +417,16 @@ hr {
         width: 60%;
     }
 
+
     .amount_price {
-        width: auto;
+        width: 105px;
         flex-direction: column-reverse;
     }
+    #second-page_amount {
+        margin-top: 15px;
+    }
 
-    #sum p {
+    #sum p, #sum input, .item_sum {
         font-size: 23px;
     }
     #sum_title {
@@ -432,11 +449,22 @@ hr {
         font-size: 19px;
     }
 
+    .item_title {
+        width: 100px;
+        margin: 0;
+    }
+    .amount_price {
+        width: 80px;
+    }
+
     .field_label {
         font-size: 14px;
     }
     .field_input, .custom_select select {
         width: 150px;
+    }
+    #sum_title {
+        margin-right: 15px;
     }
 
     #field_button {
@@ -448,5 +476,8 @@ hr {
 @media (max-width: 340px) {
     .field_input, .custom_select select {
         width: 100px;
+    }
+    .item_img img {
+        width: 50px;
     }
 }

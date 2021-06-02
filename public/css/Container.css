@@ -177,7 +177,7 @@ img {
     background-color: #fff;
     color: black;
     max-width: 500px;
-    padding: 35px;
+    padding: 60px 35px 35px 35px;
     position: relative;
     transition: all 0.6s ease 0s;
     opacity: 0;
@@ -476,6 +476,7 @@ li {
 @media (max-width: 767px) {     /*  mobile  */
     #first-page{
         margin-top: 60px;
+        height: 500px;
     }
     #second-page {
         width: 100%;
@@ -557,6 +558,9 @@ li {
     }*/
 }
 @media (max-width: 500px) {
+    #first-page{
+        height: 400px;
+    }
     .catalog_and_search, .catalog_and_search form {
         height: 100px;
     }

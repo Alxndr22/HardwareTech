@@ -109,26 +109,55 @@
                 <hr>
             </div>
             <div class="info-content">
-                @foreach($orders as $order)
-                    <div class="order">
-                        <div class="order-info">
-                            <div class="status">
-                                <p class="top-text">№ {{$order->id}} від {{$order->created_at}}</p>
-                                <p class="bottom-text">Виконано</p>
-                            </div>
-                            <div class="sum">
-                                <p class="top-text">Сума замовлення</p>
-                                <p class="bottom-text">{{$order->price}} ₴</p>
-                            </div>
+                <div class="order">
+                    <div class="order-info">
+                        <div class="status">
+                            <p class="top-text">№ 1 від 2</p>
+                            <p class="bottom-text">Виконано</p>
                         </div>
-                        <div class="pict">
-                            <img src="{{ asset('images/Container/' . $order->main_image) }}" class="item-pic">
-                            <img src="{{ asset('images/left-arrow.svg') }}" style="transform: rotate(-90deg);" class="arrow">
+                        <div class="sum">
+                            <p class="top-text">Сума замовлення</p>
+                            <p class="bottom-text">Грывны ₴</p>
                         </div>
                     </div>
-                    <hr id="order-sep">
+                    @for($i = 0; $i < 4; $i++)
+                        <div style="position: absolute; left: calc(30px * {{ $i }})">
+                            <img src="{{ asset('images/Container/1.png') }}" class="item-pic">
+                        </div>
+                    @endfor
+                    <img id="more_arrow" src="{{ asset('images/left-arrow.svg') }}" style="transform: rotate(-90deg);" class="arrow">
+                </div>
+                @foreach($orders as $order)
+                    <div class="item">
+                        <div class="item_inner">
+                            <a class="item_img" href="/">
+                                <img src="images/Container/1.png" alt="1">
+                            </a>
+                            <a href="/"><p class="item_title">Title</p></a>
+
+                            <div class="amount_price">
+                                <input class ="second-page_amount_digit" type="number" readonly  id="second-page_amount_digit" name="quantity" value="3" title="Qty">
+                                <div class="item_price">
+                                    <input type="number" readonly value="1000" id="price" name="item_price">
+                                    <span> ₴</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="item_hr">
+                    </div>
                 @endforeach
+                <hr id="order-sep">
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $("#more_arrow").click(function ()  {
+                if ( $(".item").hasClass("display")) {
+                    $(".item").removeClass("display");
+                } else {
+                    $(".item").addClass("display");
+                }
+            });
+        });</script>
 @endsection

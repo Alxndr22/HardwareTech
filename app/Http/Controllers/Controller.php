@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Comment;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\View;
 
 class Controller extends BaseController
 {
@@ -42,12 +41,18 @@ class Controller extends BaseController
 
     public function viewProduct($id)
     {
-        $product = DB::select('select p.id, price, name, main_image, image from products p
-            inner join images i on p.id = i.product_id where p.id = ?', [$id]);
+        $product = DB::select('select p.id, price, name, main_image, image, quantity, category from products p
+            inner join images i on p.id = i.product_id inner join categories c on c.id = p.category_id where p.id = ?', [$id]);
+        $likeProduct = DB::select('select p.id, price, name, small_image from products p
+            inner join categories c on c.id = p.category_id where c.category = ?', [$product[0]->category]);
         $tags = DB::select('select tag_name, tag from products p
             inner join product_tag as t on t.product_id = p.id
             inner join tags on tag_id = tags.id where p.id = ?', [$id]);
-        return View('Product', ['products' => $product, 'tags' => $tags]);
+        $comments = DB::select('select c.name, c.score, c.text from products p
+            inner join comments as c on c.product_id = p.id where p.id = ?', [$id]);
+        $groupedScores = DB::select('select count(*) as sumScore, max(score) as maxScore from products p
+            inner join comments as c on c.product_id = p.id where p.id = ? group by score order by maxScore desc', [$id]);
+        return View('Product', ['products' => $product, 'tags' => $tags, 'likeProduct' => $likeProduct, 'comments' => $comments, 'groupedScores' => $groupedScores]);
     }
 
     public function viewCategory($category)
@@ -55,5 +60,12 @@ class Controller extends BaseController
         $products = DB::select('select p.id, price, name, category, cat_image, slogan, small_image from categories c
             inner join products p on c.id = p.category_id where c.category = ?', [$category]);
         return View('Container', ['products' => $products, 'category' => $products[0]->category]);
+    }
+
+    public function saveComment($id)
+    {
+        $comment = new Comment(['name' => request('name'), 'score' => intval(request('rating')), 'text' => request('message'), 'product_id' => $id]);
+        $comment->save();
+        return redirect()->back();
     }
 }

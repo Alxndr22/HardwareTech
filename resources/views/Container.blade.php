@@ -67,7 +67,7 @@
             @if(!empty($products[0]->cat_image))
                 <img src="{{asset('images/banners/' . $products[0]->cat_image)}}" alt="1">
             @else
-                <img src="{{asset('images/no_image.png')}}" alt="1">
+                <img src="{{asset('images/banners/Banner(search).jpg')}}" alt="1">
             @endif
             <div class="text_before_banner">
                 <p class="slogan" id="top-slogan">{{ $category }}</p>
@@ -135,11 +135,11 @@
                             <div class="third-left_price_div1">
                                 <div class="custom_input">
                                     від
-                                    <input type="text" name="from" value="0">
+                                    <input type="text" name="from" value="2541">
                                 </div>
                                 <div class="custom_input">
                                     до
-                                    <input type="text" name="to" value="132499">
+                                    <input type="text" name="to" value="34729">
                                 </div>
                             </div>
 
@@ -224,11 +224,11 @@
                 <div class="third-left_price_div1">
                     <div class="custom_input">
                         від
-                        <input type="text" name="from" value="0">
+                        <input type="text" name="from" value="2541">
                     </div>
                     <div class="custom_input">
                         до
-                        <input type="text" name="to" value="132499">
+                        <input type="text" name="to" value="34729">
                     </div>
                 </div>
 

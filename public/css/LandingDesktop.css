@@ -450,22 +450,11 @@ div.category-label > a > p  {
     }
 }
 @media (max-width: 375px){
-    .slide_cont-3{
-        display: none;
-    }
     div.category-label a p, div.category-label > p {
         font-size: 24px;
         margin: 15px;
     }
-    .slider-container{
-        height: 350px;
-        width: 250px;
-    }
 
-    .slide-img {
-        height: 55%;
-
-    }
 }
 
 
