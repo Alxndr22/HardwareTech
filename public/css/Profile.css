@@ -162,7 +162,7 @@ div.pict{
     width: 40px;
 }
 
-/* ================== Add in your project ================ */
+
 
 .popup {
     z-index: 1000;
@@ -260,7 +260,7 @@ body.lock {
 }
 
 
-/* ========================================= */
+
 
 
 .item {
@@ -595,7 +595,7 @@ body.lock {
         display: none;
     }
 
-    /* ================== Add in your project ================ */
+    
     .popup_content {
         min-width: 300px;
         max-width: 320px;
@@ -606,7 +606,7 @@ body.lock {
     .field_input {
         width: 130px;
     }
-    /* ======================================= */
+   
 }
 @media(max-width: 375px) {
     .info-block{
@@ -654,11 +654,11 @@ body.lock {
     }
 
 
-    /* ================== Add in your project ================ */
+    
     .field_label {
         font-size: 14px;
     }
-    /* ======================================= */
+    
 
 
 }
